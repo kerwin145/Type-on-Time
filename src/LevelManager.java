@@ -28,6 +28,8 @@ public class LevelManager {
 		}
 	}
 
+	public enum gameMode{VERT, HORIZ, RAD}
+
 	public void gradeNote(Character noteChar){
 		Note note;
 		for(int i = 0; i < noteList.size(); i++){
