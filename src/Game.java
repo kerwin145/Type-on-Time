@@ -18,8 +18,6 @@ public class Game extends Canvas implements Runnable{
     public LevelManager levelManager = new LevelManager(this);
     public CharSpawner  charSpawner = new CharSpawner(this);
     
-    /* Example code (will be deleted) */
-    private CharNote charNote = new CharNote();
      
     public void init() {
         this.requestFocus();
@@ -49,15 +47,16 @@ public class Game extends Canvas implements Runnable{
                 tick();
                updates++;
                 --delta;
+               
             }
             ++frames;
             render();
-            
             if (System.currentTimeMillis() - timer > 1000L) {
                 timer += 1000L;
           
                 System.out.println("Frames: " + frames + ", ticks: " + updates);
                 updates = 0;
+                frames = 0;
             }
         }
         this.stop();
@@ -76,12 +75,14 @@ public class Game extends Canvas implements Runnable{
         final Graphics g = bs.getDrawGraphics();
   
         //rendering begins here
-        charNote.render(g);
         Font fnt1 = new Font("Verdana", Font.BOLD, 12);
         g.setFont(fnt1);
         g.dispose();
         bs.show();
         
+        
+        g.dispose();
+        bs.show();
 	}
     
 	private synchronized void start() {
