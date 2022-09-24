@@ -4,7 +4,7 @@ import java.util.Map;
 
 public class LevelManager {
 	Game game;
-	Gamemode gamemode;
+	public Gamemode gamemode;
 
 	
 	public LevelManager(Game game) {
