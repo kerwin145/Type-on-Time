@@ -47,15 +47,16 @@ public class Game extends Canvas implements Runnable{
                 tick();
                updates++;
                 --delta;
+               
             }
             ++frames;
             render();
-            
             if (System.currentTimeMillis() - timer > 1000L) {
                 timer += 1000L;
           
                 System.out.println("Frames: " + frames + ", ticks: " + updates);
                 updates = 0;
+                frames = 0;
             }
         }
         this.stop();
@@ -79,6 +80,9 @@ public class Game extends Canvas implements Runnable{
         g.dispose();
         bs.show();
         
+        
+        g.dispose();
+        bs.show();
 	}
     
 	private synchronized void start() {
