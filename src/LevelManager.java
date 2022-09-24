@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 
 public class LevelManager {
 	Game game;
+	Gamemode gamemode;
 
 	
 	public LevelManager(Game game) {
