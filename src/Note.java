@@ -38,41 +38,45 @@ public class Note {
 	}
 
 
-	public void setPosX(int posX) {
+	public void setPosX(double posX) {
 		this.posX = posX;
 	}
 
+	public void incrementPosX(){
+		posX += velX;
+	}
 
 	public double getPosY() {
 		return posY;
 	}
 
-
-	public void setPosY(int posY) {
+	public void setPosY(double posY) {
 		this.posY = posY;
 	}
 
+	public void incrementPosY(){
+		posY += velY;
+	}
+
 	public char getNoteType(){ return noteType;}
+	public void setNoteType(char letter) {
+		noteType = letter;
+	}
 
 	public double getVelX() {
 		return velX;
 	}
 
-
 	public void setVelX(double velX) {
 		this.velX = velX;
 	}
-
 
 	public double getVelY() {
 		return velY;
 	}
 
-
 	public void setVelY(double velY) {
 		this.velY = velY;
 	}
-	
-	
 	
 }
