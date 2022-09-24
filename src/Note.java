@@ -27,7 +27,7 @@ public class Note {
 		g.setFont(fntTest);
 		
 		g.drawString("" + noteType, (int)posX, (int)posY);
-		
+
 		//g2d.draw(getBounds());
 
 		
@@ -48,7 +48,7 @@ public class Note {
 	}
 
 	public void incrementPosX(){
-		posX += velX;
+		posX += velX / 60;
 	}
 
 	public double getPosY() {
@@ -73,7 +73,7 @@ public class Note {
 	}
 
 	public void setVelX(double velX) {
-		this.velX = velX / 60;
+		this.velX = velX;
 	}
 
 	public double getVelY() {

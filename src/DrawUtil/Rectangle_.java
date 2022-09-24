@@ -311,12 +311,14 @@ public class Rectangle_ extends Rectangle implements Shape{
     	}
 
     	if(text.size() > 0) {
+			String s = text.get(currentText);
+
 	    	if(textPos == textPosition.top) {
-	            stringGraphics.drawStringFlow(text.get(currentText), this.getBounds(), textPosition.top, g);
+	            stringGraphics.drawStringFlow(s, this.getBounds(), textPosition.top, g);
 	    	}else if(textPos == textPosition.middle) {
-	            stringGraphics.drawStringFlow(text.get(currentText), this.getBounds(), textPosition.middle, g);
+	            stringGraphics.drawStringFlow(s, this.getBounds(), textPosition.middle, g);
 	    	}else if (textPos == textPosition.left) { //centers on y axis
-	    		g.drawString(text.get(currentText), x, (int) (y + height));
+	    		g.drawString(s, x, (int) (y + height));
 	    	}
     	}
 

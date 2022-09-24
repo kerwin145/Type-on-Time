@@ -76,18 +76,19 @@ public class CharSpawner {
 					if(random1 < 0.5) {
 						posX = -Note.size;
 						posY = (int) (Math.round((Math.random()) * Game.HEIGHT) - Note.size / 2);
-						velX = (Game.WIDTH) / GameData.onScreenTime;
+						velX = Game.WIDTH / GameData.onScreenTime;
 					} else {
 						posX = Game.WIDTH;
 						posY = (int) (Math.round((Math.random()) * Game.HEIGHT) - Note.size / 2);
-						velX = -(Game.WIDTH) / GameData.onScreenTime;
+						velX = -Game.WIDTH / GameData.onScreenTime;
 					}
+					System.out.println("Horizontal char spawn velX: " + velX);
 					break;
 				case VERTICAL:
 					posX = (int) (Math.round((Math.random()) * Game.WIDTH) - Note.size / 2);
 					posY = -Note.size;
 					velY = Game.HEIGHT / GameData.onScreenTime;
-					System.out.println("At charspawner 78: PosX: " + posX + ", posY: " + posY + ", velX: " +  velX+ ", velY: " + velY );
+					//System.out.println("At charspawner 78: PosX: " + posX + ", posY: " + posY + ", velX: " +  velX+ ", velY: " + velY );
 
 					break;
 				case RADIAL:

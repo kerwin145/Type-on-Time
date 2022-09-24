@@ -29,7 +29,7 @@ public class Game extends Canvas implements Runnable{
     public static int universalTime = 0;
 
     public static enum GameMode{HORIZONTAL, VERTICAL, RADIAL};
-    public static GameMode gameMode = GameMode.VERTICAL;
+    public static GameMode gameMode = GameMode.RADIAL;
 
     public static enum GameScreen{TITLE, PLAY};
     public static GameScreen gameScreen = GameScreen.PLAY;
@@ -82,7 +82,7 @@ public class Game extends Canvas implements Runnable{
 	private void tick() {
         switch(gameScreen){
             case TITLE:
-            
+
             break;
             case PLAY:
                 scoreBoard.tick();
@@ -102,12 +102,11 @@ public class Game extends Canvas implements Runnable{
   
         g.setColor(Color.white);
         g.fillRect(0, 0, WIDTH * SCALE, HEIGHT * SCALE);
-        
+
         //rendering begins here
         switch(gameScreen){
             case TITLE:
                 titleScreen.render(g);
-            
             break;
             case PLAY:
                 playScreen.render(g);
