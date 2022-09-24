@@ -23,20 +23,17 @@ public class CharSpawner {
 				if(random1 < 0.5) {
 					posX = -Note.size;
 					posY = (int) (Math.round((Math.random()) * Game.HEIGHT) - Note.size / 2);
-					velX = (Game.WIDTH / 2) / time; 
-					velY = ((posX + Note.size / 2) - Game.HEIGHT / 2) / time;
+					velX = (Game.WIDTH) / time;
 				} else {
 					posX = Game.WIDTH;
 					posY = (int) (Math.round((Math.random()) * Game.HEIGHT) - Note.size / 2);
-					velX = -(Game.WIDTH / 2) / time; 
-					velY = ((posX + Note.size / 2) - Game.HEIGHT / 2) / time;
+					velX = -(Game.WIDTH) / time;
 				}
 				break;
 			case VERTICAL:
 				posX = (int) (Math.round((Math.random()) * Game.WIDTH) - Note.size / 2);
 				posY = -Note.size;
-				velX = ((posX + Note.size / 2) - Game.WIDTH / 2) / time;
-				velY = (Game.HEIGHT / 2) / time;
+				velY = Game.HEIGHT / time;
 				break;
 			case RADIAL:
 				double random2 = Math.round((Math.random() * (2 * (Game.WIDTH + Game.HEIGHT))));
