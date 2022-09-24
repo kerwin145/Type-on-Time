@@ -102,7 +102,7 @@ public class CharSpawner {
 						posX = Game.WIDTH;
 						posY = (int) (Math.round((Math.random()) * Game.HEIGHT) - Note.size / 2);
 						velX = -(Game.WIDTH / 2) / GameData.onScreenTime; 
-						velY = -((posX + Note.size / 2) - Game.HEIGHT / 2) / GameData.onScreenTime;
+						velY = -((posY + Note.size / 2) - Game.HEIGHT / 2) / GameData.onScreenTime;
 					} else if(random2 < Game.WIDTH * 2 + Game.HEIGHT) { // BOTTOM
 						posX = (int) (Math.round((Math.random()) * Game.WIDTH) - Note.size / 2);
 						posY = Game.HEIGHT;
@@ -112,7 +112,7 @@ public class CharSpawner {
 						posX = -Note.size;
 						posY = (int) (Math.round((Math.random()) * Game.HEIGHT) - Note.size / 2);
 						velX = (Game.WIDTH / 2) / GameData.onScreenTime; 
-						velY = -((posX + Note.size / 2) - Game.HEIGHT / 2) / GameData.onScreenTime	;
+						velY = -((posY + Note.size / 2) - Game.HEIGHT / 2) / GameData.onScreenTime	;
 					}
 					break;
 			}
