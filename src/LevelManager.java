@@ -1,9 +1,6 @@
-import java.awt.Color;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 
 public class LevelManager {
 	Game game;
@@ -28,14 +25,6 @@ public class LevelManager {
 			else i++;
 
 		}
-	}
-
-	//testing purposes
-	public void render(Graphics g){
-		Graphics2D g2d = (Graphics2D)g;
-		g.setColor(Color.orange);
-		
-
 	}
 
 	public void gradeNote(Character noteChar){
@@ -70,5 +59,6 @@ public class LevelManager {
 			else{//if it is hit too early
 				System.out.println("POOR");
 			}
+		}   
 	}
 }

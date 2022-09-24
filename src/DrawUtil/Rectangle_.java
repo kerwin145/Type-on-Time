@@ -68,8 +68,13 @@ public class Rectangle_ extends Rectangle implements Shape{
     public Rectangle_(int x, int y, int width, int height){
         super(x, y, width, height);
         
-
     }
+
+	public Rectangle_(int x, int y, int width, int height, String s){
+        super(x, y, width, height);
+        text.add(s);
+    }
+
     //the maximum constructor with arraylists
     public Rectangle_(int x, int y, int width, int height, ArrayList<String> text, textPosition textPos, Font font, Color fontColor,
     		ArrayList<Color> borderColors,  ArrayList<ArrayList<Color>> backgroundColors,gradientFormat gFormat, int backgroundOpacity, int borderThickness, boolean hasDarkenedColors){
