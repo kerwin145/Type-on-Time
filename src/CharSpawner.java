@@ -1,10 +1,12 @@
 
 public class CharSpawner {
 	Game game;
+	double posY = 40;
+	double posX = Math.random()*1350 +16;
 	public CharSpawner(Game game) {
 		this.game = game;
 	}
 	
 	//Test
-	CharNote charNote = new CharNote(40,40);
+	Note note = new Note(posX,posY);
 }
