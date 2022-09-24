@@ -59,6 +59,9 @@ public class Note {
 	}
 
 	public char getNoteType(){ return noteType;}
+	public void setNoteType(char letter) {
+		noteType = letter;
+	}
 
 	public double getVelX() {
 		return velX;
