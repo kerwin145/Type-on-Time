@@ -10,6 +10,9 @@ public class CharSpawner {
 	double velX;
 	double velY;
 	double time;
+	private double timeDelay = 0;
+	private long currentTime;
+	private long lastTime = Game.universalTime; //set to universal time at game start
 	
 	public CharSpawner(Game game) {
 		this.game = game;
@@ -64,7 +67,20 @@ public class CharSpawner {
 	
 	//Test
 	Note note = new Note(posX,posY);
-	public void TimeDelay() {
-		
+	public void tick(){
+		currentTime = game.universalTime;
+		Note newNote = new Note(1,2); //placeholder
+		if(currentTime - lastTime  >= timeDelay) {
+			//int[] beat = {1,2,3};//1 is quarter note, 2 is eight note, 3 is sixteenth note
+			int randomInt = (int)Math.random()*3+1;
+			if (randomInt == 1) {
+				timeDelay = 40; //Represents a quarter note in a 90 BPM song
+			} else if (randomInt ==2) {
+				timeDelay =20; //Eighth note
+			} else {
+				timeDelay =10;//Sixteenth note
+			}
+			lastTime = Game.universalTime;
+		}
 	}
 }
