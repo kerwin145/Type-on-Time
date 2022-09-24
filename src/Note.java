@@ -52,6 +52,7 @@ public class Note {
 		this.posY = posY;
 	}
 
+	public char getNoteType(){ return noteType;}
 
 	public double getVelX() {
 		return velX;
