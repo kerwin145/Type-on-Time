@@ -58,12 +58,12 @@ public class LevelManager {
 
 		if(Game.gameMode == Game.GameMode.VERTICAL){
 			//check if the note can be graded (poor and miss checked first)
-			if(note.getPosY() > LevelData.vert_miss){
+			if(note.getPosY() > GameData.vert_miss){
 				System.out.println("MISS");
 				//tick will automatically prune the note when it passes bottom of screen
 				noteMap.put(noteChar, noteMap.get(noteChar)-1);
 			}
-			else if(note.getBounds().intersects(LevelData.VERTICAL_PERFECT)){
+			else if(note.getBounds().intersects(GameData.VERTICAL_PERFECT)){
 				System.out.println("PERFECT!");
 				noteList.remove(note);
 				noteMap.put(noteChar, noteMap.get(noteChar)-1);
@@ -72,7 +72,7 @@ public class LevelManager {
 				game.scoreBoard.currentScore+=(3*(2*game.scoreBoard.scoreStreak*0.5));
 			
 			}
-			else if(note.getBounds().intersects(LevelData.VERTICAL_GOOD)){
+			else if(note.getBounds().intersects(GameData.VERTICAL_GOOD)){
 				System.out.println("GOOD");
 				noteList.remove(note);
 				noteMap.put(noteChar, noteMap.get(noteChar)-1);
@@ -80,7 +80,7 @@ public class LevelManager {
 				game.scoreBoard.scoreStreak++;
 				game.scoreBoard.currentScore+=(2*(1*game.scoreBoard.scoreStreak*0.5));
 			}
-			else if(note.getBounds().intersects(LevelData.VERTICAL_BAD)){
+			else if(note.getBounds().intersects(GameData.VERTICAL_BAD)){
 				System.out.println("BAD");
 				noteList.remove(note);
 				noteMap.put(noteChar, noteMap.get(noteChar)-1);
