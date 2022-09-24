@@ -66,10 +66,12 @@ public class CharSpawner {
 	Note note = new Note(posX,posY);
 	public void tick(){
 		currentTime = game.universalTime;
-		Note newNote = new Note(1,2); //placeholder
 		if(currentTime - lastTime  >= timeDelay) {
+			Note newNote = new Note(1,2); //placeholder
+			int randomChar = (int)Math.random()*25+65;
+			newNote.setNoteType((char)randomChar);
 			//int[] beat = {1,2,3};//1 is quarter note, 2 is eight note, 3 is sixteenth note
-			int randomInt = (int)Math.random()*3+1;
+			int randomInt = (int)Math.random()*2+1;
 			if (randomInt == 1) {
 				timeDelay = 40; //Represents a quarter note in a 90 BPM song
 			} else if (randomInt ==2) {
@@ -80,4 +82,5 @@ public class CharSpawner {
 			lastTime = Game.universalTime;
 		}
 	}
+	
 }
