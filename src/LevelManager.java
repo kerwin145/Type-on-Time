@@ -7,14 +7,11 @@ import java.awt.Graphics2D;
 
 public class LevelManager {
 	Game game;
-	public Gamemode gamemode;
 
 	
 	public LevelManager(Game game) {
 		this.game = game;
 	}
-
-	public enum Gamemode{VERT, HORIZ, RAD}
 	
 	public LinkedList<Note> noteList = new LinkedList<Note>();
 	public Map<Character, Integer> noteMap = new HashMap<Character, Integer>();
