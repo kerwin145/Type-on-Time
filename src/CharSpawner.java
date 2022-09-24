@@ -10,7 +10,7 @@ public class CharSpawner {
 	double posY;
 	double velX;
 	double velY;
-	double time;
+	double time = 8;
 	private double timeDelay = 0;
 	private long currentTime;
 	private long lastTime = Game.universalTime; //set to universal time at game start
@@ -53,19 +53,16 @@ public class CharSpawner {
 	}
 	
 	//Test
-	Note note = new Note(posX,posY);
 	public void tick(){
 		currentTime = game.universalTime;
 		if(currentTime - lastTime  >= timeDelay) {
-			Note newNote = new Note(1,2); //placeholder
-			int randomChar = (int)Math.random()*25+65;
+			int randomChar = (int)(Math.random()*25)+65;
 //			while ((char)randomChar == noteList.getLast().getNoteType()) {
 //				randomChar = (int)Math.random()*25+65; 
 				//loop checks to make sure that the previous spawned note
 				//is not the same as the currently spawning note
 		
 			//}
-			newNote.setNoteType((char)randomChar);
 			//int[] beat = {1,2,3};//1 is quarter note, 2 is eight note, 3 is sixteenth note
 			int randomInt = (int)Math.random()*2+1;
 			if (randomInt == 1) {
@@ -94,6 +91,8 @@ public class CharSpawner {
 					posX = (int) (Math.round((Math.random()) * Game.WIDTH) - Note.size / 2);
 					posY = -Note.size;
 					velY = Game.HEIGHT / time;
+					System.out.println("At charspawner 78: PosX: " + posX + ", posY: " + posY + ", velX: " +  velX+ ", velY: " + velY );
+
 					break;
 				case RADIAL:
 					double random2 = Math.round((Math.random() * (2 * (Game.WIDTH + Game.HEIGHT))));
@@ -120,7 +119,11 @@ public class CharSpawner {
 					}
 					break;
 			}
+
+			Note newNote = new Note(posX, posY, velX, velY, (char)randomChar); //placeholder
+
 			game.levelManager.noteList.add(newNote);
+			game.levelManager.noteMap.put((char)randomChar, game.levelManager.noteMap.get((char)randomChar) + 1);
 			lastTime = Game.universalTime;
 		}
 	}

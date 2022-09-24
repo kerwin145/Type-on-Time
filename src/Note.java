@@ -7,13 +7,16 @@ public class Note {
 	private double posX, posY;
 	private double velX;
 	private double velY;
-	public static int size;
+	public static int size = 15;
 	//font size would be the size variable
 	private char noteType;
 	//represents letter/number of object
-	public Note(double x, double y) {
+	public Note(double x, double y, double velX, double velY, char noteType) {
 		posX = x;
 		posY = y;
+		this.velX = velX;
+		this.velY = velY;
+		this.noteType = noteType;
 	}
 	
 	
@@ -21,9 +24,11 @@ public class Note {
 		Graphics2D g2d = (Graphics2D)g;	
 				
 		Font fntTest = new Font("Verdana", Font.BOLD, size);
+		g.setFont(fntTest);
 		
-		g2d.draw(getBounds());
 		g.drawString("" + noteType, (int)posX, (int)posY);
+		
+		//g2d.draw(getBounds());
 
 		
 	}
@@ -55,7 +60,7 @@ public class Note {
 	}
 
 	public void incrementPosY(){
-		posY += velY;
+		posY += velY / 60;
 	}
 
 	public char getNoteType(){ return noteType;}
@@ -68,7 +73,7 @@ public class Note {
 	}
 
 	public void setVelX(double velX) {
-		this.velX = velX;
+		this.velX = velX / 60;
 	}
 
 	public double getVelY() {

@@ -21,11 +21,11 @@ public class PlayScreen{
     public void render(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
 		g.setColor(Color.red);
-        g2d.draw(LevelData.VERTICAL_BAD);
+        g2d.fill(LevelData.VERTICAL_BAD);
         g.setColor(Color.yellow);
-        g2d.draw(LevelData.VERTICAL_GOOD);
+        g2d.fill(LevelData.VERTICAL_GOOD);
         g.setColor(Color.green);
-        g2d.draw(LevelData.VERTICAL_PERFECT);
+        g2d.fill(LevelData.VERTICAL_PERFECT);
 		
     }
 }

@@ -1,4 +1,5 @@
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
@@ -28,7 +29,7 @@ public class Game extends Canvas implements Runnable{
     public static int universalTime = 0;
 
     public static enum GameMode{HORIZONTAL, VERTICAL, RADIAL};
-    public static GameMode gameMode = GameMode.HORIZONTAL;
+    public static GameMode gameMode = GameMode.VERTICAL;
 
     public static enum GameScreen{TITLE, PLAY};
     public static GameScreen gameScreen = GameScreen.PLAY;
@@ -63,7 +64,7 @@ public class Game extends Canvas implements Runnable{
                 tick();
                updates++;
                 --delta;
-               
+                universalTime++;
             }
             ++frames;
             render();
@@ -85,8 +86,8 @@ public class Game extends Canvas implements Runnable{
             break;
             case PLAY:
                 scoreBoard.tick();
-                charSpawner.tick();
                 levelManager.tick();
+                charSpawner.tick();
             break;
         }
 	}
@@ -99,6 +100,9 @@ public class Game extends Canvas implements Runnable{
         }
         final Graphics g = bs.getDrawGraphics();
   
+        g.setColor(Color.white);
+        g.fillRect(0, 0, WIDTH * SCALE, HEIGHT * SCALE);
+        
         //rendering begins here
         switch(gameScreen){
             case TITLE:
@@ -108,10 +112,11 @@ public class Game extends Canvas implements Runnable{
             case PLAY:
                 playScreen.render(g);
                 scoreBoard.render(g);
-
+                levelManager.render(g);
             break;
         }
         
+       
         g.dispose();
         bs.show();
         

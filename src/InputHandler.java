@@ -9,7 +9,7 @@ public class InputHandler implements KeyListener {
 	
 	@Override
 	public void keyTyped(KeyEvent e) {
-		Character noteChar = (char) e.getKeyCode();
+		char noteChar = Character.toUpperCase(e.getKeyChar());
 		if(game.levelManager.noteMap.get(noteChar) > 0){
 			game.levelManager.gradeNote(noteChar);
 		}
