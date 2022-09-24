@@ -27,8 +27,8 @@ public class LevelManager {
 
 		}
 	}
-
-	public enum gameMode{VERT, HORIZ, RAD}
+	
+	public enum gamemode{VERT, HORIZ, RAD}
 
 	public void gradeNote(Character noteChar){
 		Note note;
