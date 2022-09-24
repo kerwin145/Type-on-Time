@@ -51,6 +51,27 @@ public class Note {
 	public void setPosY(int posY) {
 		this.posY = posY;
 	}
+
+
+	public double getVelX() {
+		return velX;
+	}
+
+
+	public void setVelX(double velX) {
+		this.velX = velX;
+	}
+
+
+	public double getVelY() {
+		return velY;
+	}
+
+
+	public void setVelY(double velY) {
+		this.velY = velY;
+	}
+	
 	
 	
 }
