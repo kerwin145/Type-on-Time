@@ -11,20 +11,23 @@ public class Game extends Canvas implements Runnable{
     public static final int WIDTH = 1366;
     public static final int HEIGHT = 768;
     public static final int SCALE = 1;
-    public final String TITLE = "Quick Maths";
+    public final String TITLE = "";
     private boolean running;
     private Thread thread;
 	
     public LevelManager levelManager = new LevelManager(this);
     public CharSpawner  charSpawner = new CharSpawner(this);
-    
+    public ScoreBoard scoreBoard = new ScoreBoard(this);
+
     public static int universalTime = 0;
 
     public static enum GameMode{HORIZONTAL, VERTICAL, RADIAL};
     public static GameMode gameMode = GameMode.HORIZONTAL;
      
+     
     public void init() {
         this.requestFocus();
+
     }
     	
 	public Game() {
@@ -51,7 +54,6 @@ public class Game extends Canvas implements Runnable{
                updates++;
                 --delta;
                
-                universalTime++;
             }
             ++frames;
             render();
@@ -67,7 +69,7 @@ public class Game extends Canvas implements Runnable{
     }
     
 	private void tick() {
-		
+		scoreBoard.tick();
 	}
 	
 	private void render()  {
@@ -78,10 +80,11 @@ public class Game extends Canvas implements Runnable{
         }
         final Graphics g = bs.getDrawGraphics();
   
-        //rendering begins here
-        
+        scoreBoard.render(g);
         g.dispose();
         bs.show();
+        
+   
 	}
     
 	private synchronized void start() {
