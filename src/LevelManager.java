@@ -4,6 +4,7 @@ import java.util.Map;
 
 public class LevelManager {
 	Game game;
+	Gamemode gamemode;
 
 	
 	public LevelManager(Game game) {
@@ -28,7 +29,7 @@ public class LevelManager {
 		}
 	}
 	
-	public enum gamemode{VERT, HORIZ, RAD}
+	public enum Gamemode{VERT, HORIZ, RAD}
 
 	public void gradeNote(Character noteChar){
 		Note note;
