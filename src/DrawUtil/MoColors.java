@@ -643,7 +643,7 @@ public class MoColors
             }
             final String[] fonts = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
             final int spacing2 = 5;
-            final int modVal = 800;
+            final int modVal = 760;
             g.setColor(Color.black);
             for (int k = 0; k < fonts.length; ++k) {
                 g.setFont(new Font(fonts[k], 0, 12));

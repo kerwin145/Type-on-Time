@@ -3,6 +3,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
+import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
 
@@ -17,11 +18,18 @@ public class Game extends Canvas implements Runnable{
 	
     public LevelManager levelManager = new LevelManager(this);
     public CharSpawner  charSpawner = new CharSpawner(this);
+    public TitleScreen titleScreen = new TitleScreen(this);
+    public PlayScreen playScreen = new PlayScreen(this);
+    public InputHandler inputHandler = new InputHandler(this);
+
     
     public static int universalTime = 0;
 
     public static enum GameMode{HORIZONTAL, VERTICAL, RADIAL};
     public static GameMode gameMode = GameMode.HORIZONTAL;
+
+    public static enum GameScreen{TITLE, PLAY};
+    public static GameScreen gameScreen = GameScreen.PLAY;
      
     public void init() {
         this.requestFocus();
@@ -29,6 +37,7 @@ public class Game extends Canvas implements Runnable{
     	
 	public Game() {
 		running = false;
+        this.addKeyListener(inputHandler);
 	}
 	
 	public void run() {
@@ -67,7 +76,15 @@ public class Game extends Canvas implements Runnable{
     }
     
 	private void tick() {
-		
+		switch(gameScreen){
+            case TITLE:
+
+            break;
+            case PLAY:
+                charSpawner.tick();
+                levelManager.tick();
+            break;
+        }
 	}
 	
 	private void render()  {
@@ -79,6 +96,16 @@ public class Game extends Canvas implements Runnable{
         final Graphics g = bs.getDrawGraphics();
   
         //rendering begins here
+        switch(gameScreen){
+            case TITLE:
+                titleScreen.render(g);
+            
+            break;
+            case PLAY:
+                playScreen.render(g);
+
+            break;
+        }
         
         g.dispose();
         bs.show();
