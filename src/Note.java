@@ -9,7 +9,7 @@ public class Note {
 	//font size would be the size variable
 	private char noteType;
 	//represents letter/number of object
-	public Note(int x, int y) {
+	public Note(double x, double y) {
 		posX = x;
 		posY = y;
 	}
