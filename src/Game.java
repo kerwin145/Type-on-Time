@@ -14,6 +14,9 @@ public class Game extends Canvas implements Runnable{
     private boolean running;
     private Thread thread;
 	
+    public LevelManager levelManager = new LevelManager(this);
+    public CharSpawner  charSpawner = new CharSpawner(this);
+     
     public void init() {
         this.requestFocus();
 
