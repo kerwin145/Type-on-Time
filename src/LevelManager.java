@@ -10,7 +10,7 @@ public class LevelManager {
 		this.game = game;
 	}
 
-	LinkedList<CharNote> noteList = new LinkedList<CharNote>();
+	LinkedList<Note> noteList = new LinkedList<Note>();
 	Map<Character, Integer> noteMap = new HashMap<Character, Integer>();
 
 	public void tick(){

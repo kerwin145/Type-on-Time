@@ -9,9 +9,10 @@ public class ScoreBoard {
 	private int highestScore;
 	private int numPosX; 
 	private int numPosY;
-	
+	/* 
 	public void scoreBoard() {
 	
 	}
 	while (game.)
+	*/
 }

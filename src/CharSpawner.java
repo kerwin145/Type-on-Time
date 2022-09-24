@@ -6,5 +6,5 @@ public class CharSpawner {
 	}
 	
 	//Test
-	CharNote charNote = new CharNote(40,40);
+	Note charNote = new Note(40,40);
 }

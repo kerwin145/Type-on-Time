@@ -1,3 +1,4 @@
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
@@ -6,7 +7,7 @@ public class Note {
 	private double posX, posY;
 	public static int size;
 	//font size would be the size variable
-	private String noteType;
+	private char noteType;
 	//represents letter/number of object
 	public Note(int x, int y) {
 		posX = x;
@@ -16,9 +17,11 @@ public class Note {
 	
 	public void render(Graphics g) {
 		Graphics2D g2d = (Graphics2D)g;	
+				
+		Font fntTest = new Font("Verdana", Font.BOLD, size);
 		
 		g2d.draw(getBounds());
-		g.drawString("Hi", (int)posX, (int)posY);
+		g.drawString("" + noteType, (int)posX, (int)posY);
 
 		
 	}
@@ -26,6 +29,7 @@ public class Note {
 	public Rectangle getBounds() {
 		return new Rectangle((int)posX, (int)posY-size, size, size);
 	}
+
 
 	public double getPosX() {
 		return posX;
