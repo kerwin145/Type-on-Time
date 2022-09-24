@@ -13,6 +13,8 @@ public class LevelManager {
 	public LevelManager(Game game) {
 		this.game = game;
 	}
+
+	public enum Gamemode{VERT, HORIZ, RAD}
 	
 	public LinkedList<Note> noteList = new LinkedList<Note>();
 	public Map<Character, Integer> noteMap = new HashMap<Character, Integer>();
