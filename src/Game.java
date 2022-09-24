@@ -18,10 +18,13 @@ public class Game extends Canvas implements Runnable{
     public LevelManager levelManager = new LevelManager(this);
     public CharSpawner  charSpawner = new CharSpawner(this);
     
+    public static int universalTime = 0;
+
+    public static enum GameMode{HORIZONTAL, VERTICAL, RADIAL};
+    public static GameMode gameMode = GameMode.HORIZONTAL;
      
     public void init() {
         this.requestFocus();
-
     }
     	
 	public Game() {
@@ -48,6 +51,7 @@ public class Game extends Canvas implements Runnable{
                updates++;
                 --delta;
                
+                universalTime++;
             }
             ++frames;
             render();
@@ -75,11 +79,6 @@ public class Game extends Canvas implements Runnable{
         final Graphics g = bs.getDrawGraphics();
   
         //rendering begins here
-        Font fnt1 = new Font("Verdana", Font.BOLD, 12);
-        g.setFont(fnt1);
-        g.dispose();
-        bs.show();
-        
         
         g.dispose();
         bs.show();

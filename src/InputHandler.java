@@ -9,7 +9,10 @@ public class InputHandler implements KeyListener {
 	
 	@Override
 	public void keyTyped(KeyEvent e) {
-		
+		Character noteChar = (char) e.getKeyCode();
+		if(game.levelManager.noteMap.containsKey(noteChar)){
+			game.levelManager.gradeNote(noteChar);
+		}
 	}
 	@Override
 	public void keyPressed(KeyEvent e) {
