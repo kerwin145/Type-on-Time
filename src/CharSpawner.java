@@ -21,7 +21,7 @@ public class CharSpawner {
 
 			case RADIAL:
 				double random = Math.round((Math.random() * (2 * (Game.WIDTH + Game.HEIGHT))));
-				if(random < Game.Game.WIDTH) { // TOP
+				if(random < Game.WIDTH) { // TOP
 					posX = (int) (Math.round((Math.random()) * Game.WIDTH) - charWidth / 2);
 					posY = -charHeight;
 					velX = ((posX + charWidth / 2) - Game.WIDTH / 2) / time
