@@ -75,7 +75,6 @@ public class Game extends Canvas implements Runnable{
         final Graphics g = bs.getDrawGraphics();
   
         //rendering begins here
-        charNote.render(g);
         Font fnt1 = new Font("Verdana", Font.BOLD, 12);
         g.setFont(fnt1);
         g.dispose();
