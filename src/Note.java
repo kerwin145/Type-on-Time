@@ -49,6 +49,8 @@ public class Note {
 	public void setPosY(int posY) {
 		this.posY = posY;
 	}
+
+	public char getNoteType(){ return noteType;}
 	
 	
 }
