@@ -3,13 +3,13 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-public class CharNote {
+public class Note {
 	private double posX, posY;
 	public static int size;
 	//font size would be the size variable
 	private String noteType;
 	//represents letter/number of object
-	public CharNote(int x, int y) {
+	public Note(int x, int y) {
 		posX = x;
 		posY = y;
 	}
