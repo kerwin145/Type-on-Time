@@ -5,6 +5,8 @@ import java.awt.Rectangle;
 
 public class Note {
 	private double posX, posY;
+	private double velX;
+	private double velY;
 	public static int size;
 	//font size would be the size variable
 	private char noteType;
