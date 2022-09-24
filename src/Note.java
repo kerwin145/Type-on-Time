@@ -2,7 +2,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
-public class CharNote {
+public class Note{
 	public double posX, posY;
 	
 	private int size = 12;
