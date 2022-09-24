@@ -5,4 +5,8 @@ public class LevelManager {
 	public LevelManager(Game game) {
 		this.game = game;
 	}
+
+	public void tick() {
+
+	}
 }
