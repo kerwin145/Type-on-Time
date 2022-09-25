@@ -26,7 +26,8 @@ public class GameData{
 
     
     // there is no ellipse object, just pseudo stuff for Ellipse(center x coord, center y coord, x radius, y radius)
-    public static int rad_miss = (int)(Game.WIDTH / 2); 
+    public static int rad_miss_horizontal = (int)(Game.WIDTH / 2);
+    public static int rad_miss_vertical = (int)(Game.HEIGHT / 2);
 
     public static final int[] RADIAL_PERFECT = {(int) (Game.WIDTH * Game.SCALE / 2), (int) (Game.HEIGHT * Game.SCALE / 2), radHeight_perfect_range * 2, radWidth_perfect_range * 2};
     public static final int[] RADIAL_GOOD = {(int) (Game.WIDTH * Game.SCALE / 2), (int) (Game.HEIGHT * Game.SCALE / 2), radHeight_good_range * 2, radWidth_good_range * 2};
