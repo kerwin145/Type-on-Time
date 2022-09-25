@@ -79,7 +79,7 @@ public class CharSpawner {
 						velX = Game.WIDTH / GameData.onScreenTime;
 					} else {
 						posX = Game.WIDTH;
-						posY = (int) (Math.round((Math.random()) * Game.HEIGHT) - Note.size / 2);
+						posY = (int) (Math.round((Math.random()) * (Game.HEIGHT - Note.size / 2)));
 						velX = -Game.WIDTH / GameData.onScreenTime;
 					}
 					System.out.println("Horizontal char spawn velX: " + velX);
