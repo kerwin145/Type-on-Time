@@ -14,6 +14,8 @@ public class CharSpawner {
 	private long currentTime;
 	private long lastTime = Game.universalTime; // set to universal time at game start
 
+	private final double clippingConstant = 0.965;
+
 	Map<Character, Integer> charRowMap = new HashMap<Character, Integer>();
 
 	public CharSpawner(Game game) {
@@ -64,11 +66,11 @@ public class CharSpawner {
 			// note
 			int randomInt = (int) Math.random() * 2 + 1;
 			if (randomInt == 1) {
-				timeDelay = 40; // Represents a quarter note in a 90 BPM song
+				timeDelay = GameData.delay; // Represents a quarter note in a 90 BPM song
 			} else if (randomInt == 2) {
-				timeDelay = 20; // Eighth note
+				timeDelay = GameData.delay/2; // Eighth note
 			} else {
-				timeDelay = 10;// Sixteenth note
+				timeDelay = GameData.delay/4;// Sixteenth note
 			}
 
 			switch (Game.gameMode) {
@@ -76,18 +78,18 @@ public class CharSpawner {
 					double random1 = Math.random();
 					if (random1 < 0.5) {
 						posX = -Note.size;
-						posY = (int) (Math.round((Math.random()) * Game.HEIGHT) - Note.size / 2);
+						posY = (int) (Math.round((Math.random()) * Game.HEIGHT * clippingConstant ) - Note.size / 2);
 						velX = Game.WIDTH / 2 / GameData.onScreenTime;
 					} else {
 						posX = Game.WIDTH;
-						posY = (int) (Math.round((Math.random()) * (Game.HEIGHT - Note.size / 2)));
+						posY = (int) (Math.round((Math.random()) * (Game.HEIGHT - Note.size / 2) * clippingConstant ));
 						velX = -Game.WIDTH / 2 / GameData.onScreenTime;
 					}
 					velY = 0;
 					System.out.println("Horizontal char spawn velX: " + velX);
 					break;
 				case VERTICAL:
-					posX = (int) (Math.round((Math.random()) * Game.WIDTH) - Note.size / 2);
+					posX = (int) (Math.round((Math.random()) * Game.WIDTH * clippingConstant ) - Note.size / 2);
 					posY = -Note.size;
 					velY = Game.HEIGHT / GameData.onScreenTime;
 					// System.out.println("At charspawner 78: PosX: " + posX + ", posY: " + posY +

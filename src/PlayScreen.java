@@ -1,4 +1,6 @@
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Color;
 
 public class PlayScreen {
     Game game;
@@ -16,24 +18,20 @@ public class PlayScreen {
     public void render(Graphics g) {
         switch (Game.gameMode) {
             case HORIZONTAL:
+                g.drawImage(Resources.horizontalBackground, 0, 0, null);
                 break;
             case RADIAL:
                 g.drawImage(Resources.radialBackground, 0, 0, null);
                 break;
             case VERTICAL:
-                g.drawImage(Resources.gameBackground, 0, 0, null);
+                g.drawImage(Resources.verticalBackground, 0, 0, null);
                 break;
 
         }
 
-        /*
-         * g2d.fill(GameData.VERTICAL_BAD);
-         * g.setColor(Color.yellow);
-         * g2d.fill(GameData.VERTICAL_GOOD);
-         * g.setColor(Color.green);
-         * g2d.fill(GameData.VERTICAL_PERFECT);
-         */
-
+       
+       
+         
         // Graphics2D g2d = (Graphics2D) g;
 
     }

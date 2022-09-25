@@ -8,9 +8,10 @@ public class Note {
 	private double posX, posY;
 	private double velX;
 	private double velY;
-	public static int size = 30
+	public static int size = 30;
+	public boolean skip = false;
 
-	;
+	
 	// font size would be the size variable
 	private char noteType;
 

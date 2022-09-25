@@ -43,9 +43,14 @@ public class PopupManager {
 
     public void render(Graphics g) {
         g.setFont(new Font("Verdana", Font.ITALIC, 20));
-        for (Iterator<Popup> iterator = popUpList.iterator(); iterator.hasNext();) {
-            Popup p = iterator.next();
-            p.render(g);
+        try{
+            for (Iterator<Popup> iterator = popUpList.iterator(); iterator.hasNext();) {
+                Popup p = iterator.next();
+                p.render(g);
+            }
+        }catch(ConcurrentModificationException e){
+            System.out.println("Comodification: UwU list is busy rendering!");
+            
         }
     }
 }

@@ -323,7 +323,6 @@ public class Rectangle_ extends Rectangle implements Shape{
 	            stringGraphics.drawStringFlow(s, this.getBounds(), textPosition.top, g);
 	    	}else if(textPos == textPosition.middle) {
 	            stringGraphics.drawStringFlow(s, this.getBounds(), textPosition.middle, g);
-				System.out.println("Drawing:  " + s);
 
 	    	}else if (textPos == textPosition.left) { //centers on y axis
 	    		g.drawString(s, x, (int) (y + height));

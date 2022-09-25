@@ -9,7 +9,8 @@ import java.awt.FontFormatException;
 
 public class Resources {
     public static BufferedImage titleBackground;
-    public static BufferedImage gameBackground;
+    public static BufferedImage verticalBackground;
+    public static BufferedImage horizontalBackground;
     public static BufferedImage radialBackground;
 
     public static Font fntTitle;
@@ -17,7 +18,8 @@ public class Resources {
     public Resources() {
         try {
             titleBackground = ImageIO.read(new File("Resources/TitleBackground.png"));
-            gameBackground = ImageIO.read(new File("Resources/HorizontalBackground.png"));
+            verticalBackground = ImageIO.read(new File("Resources/VerticalBackground.png"));
+            horizontalBackground = ImageIO.read(new File("Resources/HorizontalBackground.png"));
             radialBackground = ImageIO.read(new File("Resources/RadialBackground.png"));
         } catch (IOException e) {
             System.out.println("image not found");

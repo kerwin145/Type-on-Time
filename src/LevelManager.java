@@ -2,6 +2,8 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
+import javax.security.sasl.SaslClient;
+
 import java.awt.Graphics;
 
 public class LevelManager {
@@ -17,19 +19,21 @@ public class LevelManager {
 		}
 
 	}
-	public void resetField(){
+
+	public void initializeField(){
 		noteList.clear();
 		for(int i = 65; i <= 90; i++){
 			noteMap.put((char)i, 0);
 		}
-
+		game.scoreBoard.currentScore = 0;
+		game.scoreBoard.scoreStreak = 0;
 	}
-	
+
+
 	public void tick(){
 
 		//update and prune
-		int i = 0;
-		while (i < noteList.size()) {
+		for(int i = 0; i < noteList.size(); i++) {
 			Note note = noteList.get(i);
 
 			note.incrementPosX();
@@ -42,16 +46,19 @@ public class LevelManager {
 					noteMap.put(note.getNoteType(), noteMap.get(note.getNoteType()) - 1);
 					noteList.remove(note);
 					game.scoreBoard.scoreStreak = 0;
-				} else
-					i++;
+					i--;
+				} else if(note.getPosY() > Game.HEIGHT *.95 * Game.SCALE){
+					note.skip = true;
+
+				}
 			} else if(Game.gameMode == Game.GameMode.HORIZONTAL) {
 				if((note.getPosX() + Note.size / 2 > GameData.horiz_miss_right && note.getVelX() > 0)
 						|| (note.getPosX() + Note.size / 2 < GameData.horiz_miss_left && note.getVelX() < 0)) {
 					noteMap.put(note.getNoteType(), noteMap.get(note.getNoteType()) - 1);
 					noteList.remove(note);
 					game.scoreBoard.scoreStreak = 0;
-				} else
-					i++;
+					i--;
+				} 
 			} else if (Game.gameMode == Game.GameMode.RADIAL) {
 				if ((note.getPosX() + Note.size / 2 > GameData.rad_miss_horizontal && note.getVelX() > 0)
 						|| (note.getPosX() + Note.size / 2 < GameData.rad_miss_horizontal && note.getVelX() < 0)
@@ -60,8 +67,8 @@ public class LevelManager {
 					noteMap.put(note.getNoteType(), noteMap.get(note.getNoteType()) - 1);
 					noteList.remove(note);
 					game.scoreBoard.scoreStreak = 0;
-				} else
-					i++;
+					i--;
+				} 
 			}
 			
 
@@ -77,7 +84,7 @@ public class LevelManager {
 		// get the earliest note that matches note char
 		Note note = null;
 		for (int i = 0; i < noteList.size(); i++) {
-			if (noteList.get(i).getNoteType() == noteChar) {
+			if (noteList.get(i).getNoteType() == noteChar && !noteList.get(i).skip) {
 				note = noteList.get(i);
 				i = noteList.size();
 			}

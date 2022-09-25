@@ -3,16 +3,17 @@ import java.awt.Rectangle;
 import DrawUtil.RectanglePlus;
 
 public class GameData {
+    private static double difficultyConstant = 1.25; // the higher, the easier
+
     private static final int vert_yHoriz = (int) (.85 * Game.HEIGHT * Game.SCALE);
-    private static int vert_perfect_range = (int) (Game.HEIGHT * Game.SCALE * .008);
-    private static int vert_good_range = (int) (Game.HEIGHT * Game.SCALE * .03);
-    private static int vert_meh_range = (int) (Game.HEIGHT * Game.SCALE * .05);
+    private static int vert_perfect_range = (int) (Game.HEIGHT * Game.SCALE * .01 * difficultyConstant);
+    private static int vert_good_range = (int) (Game.HEIGHT * Game.SCALE * .03 * difficultyConstant);
+    private static int vert_meh_range = (int) (Game.HEIGHT * Game.SCALE * .05 * difficultyConstant);
 
-    private static int horiz_perfect_range = (int) (Game.HEIGHT * Game.SCALE * .004);
-    private static int horiz_good_range = (int) (Game.HEIGHT * Game.SCALE * .015);
-    private static int horiz_meh_range = (int) (Game.HEIGHT * Game.SCALE * .025);
+    private static int horiz_perfect_range = (int) (Game.HEIGHT * Game.SCALE * .01 * difficultyConstant);
+    private static int horiz_good_range = (int) (Game.HEIGHT * Game.SCALE * .03 * difficultyConstant);
+    private static int horiz_meh_range = (int) (Game.HEIGHT * Game.SCALE * .05 * difficultyConstant);
 
-    private static double difficultyConstant = 1.3; // the higher, the easier
     private static int radHeight_perfect_range = (int) (Game.HEIGHT * Game.SCALE * .015 * difficultyConstant);
     private static int radHeight_good_range = (int) (Game.HEIGHT * Game.SCALE * .03 * difficultyConstant);
     private static int radHeight_meh_range = (int) (Game.HEIGHT * Game.SCALE * .05 * difficultyConstant);
@@ -21,6 +22,7 @@ public class GameData {
     private static int radWidth_meh_range = (int) (Game.WIDTH * Game.SCALE * .08893 * difficultyConstant);
 
     public static double onScreenTime = 8;
+    public static int delay = 40;
 
     public static int vert_miss = (int) (.95 * Game.HEIGHT * Game.SCALE);
     public static final Rectangle VERTICAL_PERFECT = new Rectangle(0, vert_yHoriz - vert_perfect_range,
@@ -31,6 +33,7 @@ public class GameData {
             vert_meh_range * 2);
 
     public static int horiz_miss_left = Game.WIDTH / 2 - horiz_meh_range;
+
     public static int horiz_miss_right = Game.WIDTH / 2 + horiz_meh_range;
     public static final Rectangle HORIZONTAL_PERFECT = new RectanglePlus(Game.WIDTH / 2 - horiz_perfect_range, 0,
             2 * horiz_perfect_range, Game.HEIGHT);

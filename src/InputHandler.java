@@ -23,14 +23,19 @@ public class InputHandler implements KeyListener, MouseInputListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		char noteChar = Character.toUpperCase(e.getKeyChar());
-		if(game.levelManager.noteMap.get(noteChar) > 0){
-			game.levelManager.gradeNote(noteChar);
-		}
+		
 		
 		if (Game.gameScreen == Game.GameScreen.PLAY){
+			if(game.levelManager.noteMap.containsKey(noteChar) && game.levelManager.noteMap.get(noteChar) > 0){
+				game.levelManager.gradeNote(noteChar);
+			}
+
 			if(e.getKeyCode() == e.VK_ESCAPE){
 				Game.gameScreen = Game.GameScreen.LEVELSELECT;
-				game.levelManager.resetField();
+			}
+			if(e.getKeyCode() == e.VK_ENTER){
+				Game.gameScreen = Game.GameScreen.END;
+				game.endScreen.initEndPage(game.scoreBoard.currentScore);
 			}
 		}
 	}
@@ -64,18 +69,33 @@ public class InputHandler implements KeyListener, MouseInputListener {
 				Game.gameMode = Game.GameMode.VERTICAL;
 				Game.gameScreen = Game.GameScreen.PLAY;
 				System.out.println("Starting Vertical");
+				game.levelManager.initializeField();
+				//Game.scoreBoard.
 			} else if (clickInBounds(game.levelSelectScreen.horizontalSelect.getBounds())) {
 				Game.gameMode = Game.GameMode.HORIZONTAL;
 				Game.gameScreen = Game.GameScreen.PLAY;
 				System.out.println("Starting Horizontal");
+				game.levelManager.initializeField();
 			} else if (clickInBounds(game.levelSelectScreen.radialSelect.getBounds())) {
 				Game.gameMode = Game.GameMode.RADIAL;
 				Game.gameScreen = Game.GameScreen.PLAY;
 				System.out.println("Starting Radial");
-			} else if (clickInBounds(game.levelSelectScreen.increaseSelect.getBounds()))
-				GameData.onScreenTime += 0.25;
-			else if (clickInBounds(game.levelSelectScreen.decreaseSelect.getBounds()))
-				GameData.onScreenTime -= 0.25;
+				game.levelManager.initializeField();
+			} 
+			else if (clickInBounds(game.levelSelectScreen.increaseSelect.getBounds())){
+				if(GameData.onScreenTime < 50) GameData.onScreenTime += 0.25;
+			}
+			else if (clickInBounds(game.levelSelectScreen.decreaseSelect.getBounds())){
+				if(GameData.onScreenTime > .25 )GameData.onScreenTime -= 0.25;
+			}
+			else if (clickInBounds(game.levelSelectScreen.decreaseSelectDelay.getBounds())){
+				if(GameData.delay > 2) GameData.delay -= 2;
+			}
+			else if (clickInBounds(game.levelSelectScreen.increaseSelectDelay.getBounds())){
+				if(GameData.onScreenTime < 150) GameData.delay += 2;
+			}
+			
+			
 		}
 		else if (Game.gameScreen == Game.GameScreen.END){
 			if (clickInBounds(game.endScreen.retryButton.getBounds())) {
