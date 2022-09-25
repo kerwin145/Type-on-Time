@@ -19,7 +19,14 @@ public class PlayScreen{
     }
 
     public void render(Graphics g){
-        g.drawImage(Resources.gameBackground, 0, 0, null);
+        switch(game.gameMode){
+            case HORIZONTAL:
+                g.drawImage(Resources.gameBackground, 0, 0, null);
+                break;
+            case RADIAL:
+                g.drawImage(Resources.radialBackground, 0, 0, null);
+                break;
+        }
 
         /*
         g2d.fill(GameData.VERTICAL_BAD);

@@ -1,6 +1,7 @@
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
+
 import java.awt.Graphics;
 
 public class LevelManager {
@@ -17,21 +18,32 @@ public class LevelManager {
 		}
 	}
 	
-	
-
 	public void tick(){
 
 		//update and prune
 		int i = 0;
 		while(i < noteList.size()){
-			noteList.get(i).incrementPosX();
-			noteList.get(i).incrementPosY();
+			Note note = noteList.get(i);
+
+			note.incrementPosX();
+			note.incrementPosY();
+
 			//System.out.println("note: " + noteList.get(i).getNoteType() + ", at position: (" + noteList.get(i).getPosX() + ", " + noteList.get(i).getPosY() + ")");
-			if(noteList.get(i).getPosY() > Game.HEIGHT * Game.SCALE){
-				noteMap.put(noteList.get(i).getNoteType(), noteMap.get(noteList.get(i).getNoteType())-1);
-				noteList.remove(noteList.get(i));
+			if(game.gameMode == game.gameMode.VERTICAL){
+				if(note.getPosY() > Game.HEIGHT * Game.SCALE){
+					noteMap.put(note.getNoteType(), noteMap.get(note.getNoteType())-1);
+					noteList.remove(note);
+					game.scoreBoard.scoreStreak = 0;
+				}
+				else i++;
+			}else if(game.gameMode == game.gameMode.RADIAL){
+				if((note.getPosX() > GameData.rad_miss && note.getVelX() > 0) || (note.getPosX() < GameData.rad_miss && note.getVelX() < 0)){
+					noteMap.put(note.getNoteType(), noteMap.get(note.getNoteType())-1);
+					noteList.remove(note);
+					game.scoreBoard.scoreStreak = 0;
+				}
+				else i++;
 			}
-			else i++;
 
 		}
 	}
@@ -56,17 +68,11 @@ public class LevelManager {
 			return;
 		}
 
-		if(Game.gameMode == Game.GameMode.VERTICAL){
-			//check if the note can be graded (poor and miss checked first)
-			if(note.getPosY() > GameData.vert_miss){
-				System.out.println("MISS");
-				//tick will automatically prune the note when it passes bottom of screen
-				noteMap.put(noteChar, noteMap.get(noteChar)-1);
+		double noteX = note.getPosX(), noteY = note.getPosY();
 
-				game.scoreBoard.scoreStreak = 0;
-			}
-			else if(GameData.VERTICAL_PERFECT.contains(note.getBounds().getX() + note.getBounds().getWidth() / 2, note.getBounds().getY() + note.getBounds().getHeight() / 2)) {
-				System.out.println("PERFECT!");
+		if(Game.gameMode == Game.GameMode.VERTICAL){
+			if(GameData.VERTICAL_PERFECT.contains(note.getBounds().getX() + note.getBounds().getWidth() / 2, note.getBounds().getY() + note.getBounds().getHeight() / 2)) {
+				game.popupManager.addPopup("PERFECT", noteX, noteY);
 				noteList.remove(note);
 				noteMap.put(noteChar, noteMap.get(noteChar)-1);
 
@@ -75,7 +81,7 @@ public class LevelManager {
 			
 			}
 			else if(GameData.VERTICAL_GOOD.contains(note.getBounds().getX() + note.getBounds().getWidth() / 2, note.getBounds().getY() + note.getBounds().getHeight() / 2)){
-				System.out.println("GOOD");
+				game.popupManager.addPopup("GOOD", noteX, noteY);
 				noteList.remove(note);
 				noteMap.put(noteChar, noteMap.get(noteChar)-1);
 
@@ -83,27 +89,21 @@ public class LevelManager {
 				game.scoreBoard.currentScore+=(2*(1*game.scoreBoard.scoreStreak*0.5));
 			}
 			else if(GameData.VERTICAL_MEH.contains(note.getBounds().getX() + note.getBounds().getWidth() / 2, note.getBounds().getY() + note.getBounds().getHeight() / 2)) {
-				System.out.println("MEH");
+				game.popupManager.addPopup("MEH", noteX, noteY);
 				noteList.remove(note);
 				noteMap.put(noteChar, noteMap.get(noteChar)-1);
 
 				game.scoreBoard.currentScore++;
 			}
 			else{//if it is hit too early
-				System.out.println("POOR");
+				game.popupManager.addPopup("POOR", noteX, noteY);
 
 				game.scoreBoard.scoreStreak = 0;
 			}
 		} else if(Game.gameMode == Game.GameMode.RADIAL){
-			if((note.getPosX() > GameData.rad_miss && note.getVelX() > 0) || (note.getPosX() < GameData.rad_miss && note.getVelX() < 0)){
-				System.out.println("MISS");
-				//tick will automatically prune the note when it passes bottom of screen
-				noteMap.put(noteChar, noteMap.get(noteChar)-1);
-
-				game.scoreBoard.scoreStreak = 0;
-			}
-			else if(GameData.RADIAL_PERFECT.contains(note.getBounds().getX() + note.getBounds().getWidth() / 2, note.getBounds().getY() + note.getBounds().getHeight() / 2)) {
-				System.out.println("PERFECT!");
+		
+			if(GameData.checkEllipse((int)noteX, (int)noteY, GameData.RADIAL_PERFECT[0],GameData.RADIAL_PERFECT[1], GameData.RADIAL_PERFECT[2], GameData.RADIAL_PERFECT[3])){
+				game.popupManager.addPopup("PERFECT", noteX, noteY);
 				noteList.remove(note);
 				noteMap.put(noteChar, noteMap.get(noteChar)-1);
 
@@ -111,23 +111,23 @@ public class LevelManager {
 				game.scoreBoard.currentScore+=(3*(2*game.scoreBoard.scoreStreak*0.5));
 			
 			}
-			else if(GameData.RADIAL_GOOD.contains(note.getBounds().getX() + note.getBounds().getWidth() / 2, note.getBounds().getY() + note.getBounds().getHeight() / 2)){
-				System.out.println("GOOD");
+			else if(GameData.checkEllipse((int)noteX, (int)noteY, GameData.RADIAL_GOOD[0],GameData.RADIAL_GOOD[1], GameData.RADIAL_GOOD[2], GameData.RADIAL_GOOD[3])){
+				game.popupManager.addPopup("GOOD", noteX, noteY);
 				noteList.remove(note);
 				noteMap.put(noteChar, noteMap.get(noteChar)-1);
 
 				game.scoreBoard.scoreStreak++;
 				game.scoreBoard.currentScore+=(2*(1*game.scoreBoard.scoreStreak*0.5));
 			}
-			else if(GameData.RADIAL_MEH.contains(note.getBounds().getX() + note.getBounds().getWidth() / 2, note.getBounds().getY() + note.getBounds().getHeight() / 2)) {
-				System.out.println("MEH");
+			else if(GameData.checkEllipse((int)noteX, (int)noteY, GameData.RADIAL_MEH[0],GameData.RADIAL_MEH[1], GameData.RADIAL_MEH[2], GameData.RADIAL_MEH[3])){
+				game.popupManager.addPopup("MEH", noteX, noteY);
 				noteList.remove(note);
 				noteMap.put(noteChar, noteMap.get(noteChar)-1);
 
 				game.scoreBoard.currentScore++;
 			}
 			else{//if it is hit too early
-				System.out.println("POOR");
+				game.popupManager.addPopup("POOR", noteX, noteY);
 
 				game.scoreBoard.scoreStreak = 0;
 			}

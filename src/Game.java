@@ -22,17 +22,17 @@ public class Game extends Canvas implements Runnable{
     public LevelManager levelManager = new LevelManager(this);
     public CharSpawner  charSpawner = new CharSpawner(this);
     public ScoreBoard scoreBoard = new ScoreBoard(this);
+    public PopupManager popupManager = new PopupManager(this);
 
     public TitleScreen titleScreen = new TitleScreen(this);
     public PlayScreen playScreen = new PlayScreen(this);
     public LevelSelectScreen levelSelectScreen = new LevelSelectScreen();
     public InputHandler inputHandler = new InputHandler(this);
 
-    
     public static int universalTime = 0;
 
     public static enum GameMode{HORIZONTAL, VERTICAL, RADIAL};
-    public static GameMode gameMode = GameMode.VERTICAL;
+    public static GameMode gameMode = GameMode.RADIAL;
 
     public static enum GameScreen{TITLE, PLAY, LEVELSELECT};
     public static GameScreen gameScreen = GameScreen.LEVELSELECT;
@@ -91,6 +91,7 @@ public class Game extends Canvas implements Runnable{
                 scoreBoard.tick();
                 levelManager.tick();
                 charSpawner.tick();
+                popupManager.tick();
             break;
         }
 	}
@@ -116,6 +117,7 @@ public class Game extends Canvas implements Runnable{
                 playScreen.render(g);
                 scoreBoard.render(g);
                 levelManager.render(g);
+                popupManager.render(g);
             break;
             case LEVELSELECT:
             levelSelectScreen.render(g);
