@@ -13,13 +13,6 @@ public class InputHandler implements KeyListener, MouseInputListener {
 
 	public InputHandler(Game game) {
 		this.game = game;
-<<<<<<< HEAD
-=======
-		for (int i = 65; i <= 90; i++)
-			keysPressed.put(i, false);
-		
-
->>>>>>> 976db32926c67ccd779f16467187866b7719641f
 	}
 
 	@Override
@@ -30,30 +23,24 @@ public class InputHandler implements KeyListener, MouseInputListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		char noteChar = Character.toUpperCase(e.getKeyChar());
-<<<<<<< HEAD
-
-		if (game.levelManager.noteMap.containsKey(noteChar) && game.levelManager.noteMap.get(noteChar) > 0) {
-			game.levelManager.gradeNote(noteChar);
-		}
-	}
-	
-
-=======
-		if(keysPressed.get(e.getKeyCode()) == false){
-			if(e.getKeyCode() <= 90 && e.getKeyCode() >= 65 && keysPressed.get(e.getKeyCode()) == false){
-				if(game.levelManager.noteMap.get(noteChar) > 0){
-					game.levelManager.gradeNote(noteChar);
-					keysPressed.put(e.getKeyCode(), true);
-				}
-			}
-			if (Game.gameScreen == Game.GameScreen.PLAY){
-				if(e.getKeyCode() == e.VK_ESCAPE)
-					Game.gameScreen = Game.GameScreen.LEVELSELECT;
-					game.levelManager.resetField();
+		
+		if(Game.gameScreen == Game.GameScreen.LEVELSELECT){
+			if(e.getKeyCode() == e.VK_ESCAPE){
+				Game.gameScreen = Game.GameScreen.TITLE;
 			}
 		}
+		if (Game.gameScreen == Game.GameScreen.PLAY){
+			if(game.levelManager.noteMap.containsKey(noteChar) && game.levelManager.noteMap.get(noteChar) > 0){
+				game.levelManager.gradeNote(noteChar);
+			}
+
+			if(e.getKeyCode() == e.VK_ESCAPE){
+				Game.gameScreen = Game.GameScreen.LEVELSELECT;
+				game.levelManager.resetField();
+			}
+		}
+		
 	}
->>>>>>> 976db32926c67ccd779f16467187866b7719641f
 	@Override
 	public void keyReleased(KeyEvent e) {
 
