@@ -10,6 +10,7 @@ public class Popup {
     private double x;
     private double y;
     private int alpha;
+    private int currentTick = 0;
     public static final int FONT_SIZE = 50;
 
 
@@ -37,6 +38,7 @@ public class Popup {
             alpha = 0;
             // delete current score object
         }
+        currentTick++;
     }
     */
 }
