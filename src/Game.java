@@ -37,7 +37,7 @@ public class Game extends Canvas implements Runnable{
     public static GameMode gameMode = GameMode.HORIZONTAL;
 
     public static enum GameScreen{TITLE, PLAY, LEVELSELECT, END};
-    public static GameScreen gameScreen = GameScreen.END;
+    public static GameScreen gameScreen = GameScreen.TITLE;
      
      
     public void init() {

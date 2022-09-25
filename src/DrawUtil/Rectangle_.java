@@ -40,8 +40,7 @@ public class Rectangle_ extends Rectangle implements Shape{
 	//the size of backgroundColors and borderColors should be the same, but it isn't critical
 	int currentBackgroundColor = 0;
 	int currentBorderColor = 0;
-	int currentText
-	= 0;
+	int currentText = 0;
 	/*An example for the background Color: You have a rectangle with three modes. 
 	 * The first will be a gradient from red to blue
 	 * Second will be solid purple
@@ -307,7 +306,7 @@ public class Rectangle_ extends Rectangle implements Shape{
 	    			g.setColor(getSelectedColor(fontColor, 1));
 	    	}else 
 	    	*/
-	    		g.setColor(fontColor);
+			g.setColor(fontColor);
     	}
 
     	if(text.size() > 0) {

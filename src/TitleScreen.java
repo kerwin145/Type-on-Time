@@ -24,7 +24,9 @@ public class TitleScreen{
 
     Rectangle_ exitButton = new Rectangle_(0,0, buttonWidth, buttonHeight, "Exit", textPosition.middle, fntTitle, MoColors.dimgray, new Color[]{MoColors.silver}, new Color[][]{new Color[]{MoColors.lightGreen, MoColors.paleGreen}}, gradientFormat.vertical, 1, 1, true);
          
-    Rectangle_ title = new Rectangle_(0,(int)(30 + Game.HEIGHT * Game.SCALE * .05), Game.WIDTH, (int)(10 + game.HEIGHT * Game.SCALE * .05), "Type on Time");
+   // Rectangle_ title = new Rectangle_(0,(int)(30 + Game.HEIGHT * Game.SCALE * .05), Game.WIDTH, (int)(130 + Game.HEIGHT * Game.SCALE * .05), "Type on Time");
+   
+   Rectangle_ title = new Rectangle_(0,0,200, 200, "Type on Time");
     /*
       public Rectangle_(int x, int y, int width, int height, String text, textPosition textPos, Font font, Color fontColor,
     Color[] borderColors,  Color[][] backgroundColors, gradientFormat gFormat, int backgroundOpacity, int borderThickness, boolean hasDarkenedColors){

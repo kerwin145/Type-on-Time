@@ -36,6 +36,10 @@ public class LevelManager {
 					game.scoreBoard.scoreStreak = 0;
 				}
 				else i++;
+			}
+			else if(game.gameMode == game.gameMode.HORIZONTAL){
+				
+				
 			}else if(game.gameMode == game.gameMode.RADIAL){
 				if((note.getPosX() > GameData.rad_miss_horizontal && note.getVelX() > 0) || (note.getPosX() < GameData.rad_miss_horizontal && note.getVelX() < 0)
 				|| (note.getPosY() > GameData.rad_miss_vertical && note.getVelY() > 0) || (note.getPosY() < GameData.rad_miss_vertical && note.getVelY() < 0)){
@@ -45,6 +49,7 @@ public class LevelManager {
 				}
 				else i++;
 			}
+			
 
 		}
 	}
