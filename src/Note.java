@@ -1,7 +1,7 @@
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
+// import java.awt.Graphics2D;
 import java.awt.Rectangle;
 
 public class Note {
@@ -9,14 +9,12 @@ public class Note {
 	private double velX;
 	private double velY;
 	public static int size = 30
-	
-	
-	
-	
+
 	;
-	//font size would be the size variable
+	// font size would be the size variable
 	private char noteType;
-	//represents letter/number of object
+
+	// represents letter/number of object
 	public Note(double x, double y, double velX, double velY, char noteType) {
 		posX = x;
 		posY = y;
@@ -24,37 +22,33 @@ public class Note {
 		this.velY = velY;
 		this.noteType = noteType;
 	}
-	
-	
+
 	public void render(Graphics g) {
-		Graphics2D g2d = (Graphics2D)g;	
-				
+		// Graphics2D g2d = (Graphics2D) g;
+
 		Font fntTest = new Font("Verdana", Font.BOLD, size);
 		g.setFont(fntTest);
 		g.setColor(Color.black);
-		
-		g.drawString("" + noteType, (int)posX, (int)posY);
 
-		//g2d.draw(getBounds());
+		g.drawString("" + noteType, (int) posX, (int) posY);
 
-		
+		// g2d.draw(getBounds());
+
 	}
-	
+
 	public Rectangle getBounds() {
-		return new Rectangle((int)posX, (int)posY-size, size, size);
+		return new Rectangle((int) posX, (int) posY - size, size, size);
 	}
-
 
 	public double getPosX() {
 		return posX;
 	}
 
-
 	public void setPosX(double posX) {
 		this.posX = posX;
 	}
 
-	public void incrementPosX(){
+	public void incrementPosX() {
 		posX += velX / 60;
 	}
 
@@ -66,11 +60,14 @@ public class Note {
 		this.posY = posY;
 	}
 
-	public void incrementPosY(){
+	public void incrementPosY() {
 		posY += velY / 60;
 	}
 
-	public char getNoteType(){ return noteType;}
+	public char getNoteType() {
+		return noteType;
+	}
+
 	public void setNoteType(char letter) {
 		noteType = letter;
 	}
@@ -90,5 +87,4 @@ public class Note {
 	public void setVelY(double velY) {
 		this.velY = velY;
 	}
-	
 }
