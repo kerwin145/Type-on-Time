@@ -5,7 +5,7 @@ import java.awt.Color;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-public class ScoreIndicator {
+public class Popup {
     private String result;
     private double x;
     private double y;
@@ -13,7 +13,7 @@ public class ScoreIndicator {
     public static final int FONT_SIZE = 50;
 
 
-    public ScoreIndicator(String result, double x, double y) {
+    public Popup(String result, double x, double y) {
         this.x = x;
         this.y = y;
         this.result = result;

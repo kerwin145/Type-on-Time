@@ -4,9 +4,10 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
-import java.awt.event.KeyListener;
 
 import javax.swing.JFrame;
+
+
 
 public class Game extends Canvas implements Runnable{
 
@@ -17,6 +18,7 @@ public class Game extends Canvas implements Runnable{
     private boolean running;
     private Thread thread;
 	
+    public Resources imgs = new Resources();
     public LevelManager levelManager = new LevelManager(this);
     public CharSpawner  charSpawner = new CharSpawner(this);
     public ScoreBoard scoreBoard = new ScoreBoard(this);
@@ -29,7 +31,7 @@ public class Game extends Canvas implements Runnable{
     public static int universalTime = 0;
 
     public static enum GameMode{HORIZONTAL, VERTICAL, RADIAL};
-    public static GameMode gameMode = GameMode.RADIAL;
+    public static GameMode gameMode = GameMode.VERTICAL;
 
     public static enum GameScreen{TITLE, PLAY};
     public static GameScreen gameScreen = GameScreen.PLAY;
@@ -37,7 +39,7 @@ public class Game extends Canvas implements Runnable{
      
     public void init() {
         this.requestFocus();
-
+   
     }
     	
 	public Game() {
@@ -108,6 +110,7 @@ public class Game extends Canvas implements Runnable{
             case TITLE:
                 titleScreen.render(g);
             break;
+
             case PLAY:
                 playScreen.render(g);
                 scoreBoard.render(g);
