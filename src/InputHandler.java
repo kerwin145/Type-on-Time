@@ -10,9 +10,9 @@ import javax.swing.event.MouseInputListener;
 public class InputHandler implements KeyListener, MouseInputListener {
 	Game game;
 
-
 	public InputHandler(Game game) {
 		this.game = game;
+
 	}
 
 	@Override
@@ -23,23 +23,16 @@ public class InputHandler implements KeyListener, MouseInputListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		char noteChar = Character.toUpperCase(e.getKeyChar());
-		
-		if(Game.gameScreen == Game.GameScreen.LEVELSELECT){
-			if(e.getKeyCode() == e.VK_ESCAPE){
-				Game.gameScreen = Game.GameScreen.TITLE;
-			}
+		if(game.levelManager.noteMap.get(noteChar) > 0){
+			game.levelManager.gradeNote(noteChar);
 		}
+		
 		if (Game.gameScreen == Game.GameScreen.PLAY){
-			if(game.levelManager.noteMap.containsKey(noteChar) && game.levelManager.noteMap.get(noteChar) > 0){
-				game.levelManager.gradeNote(noteChar);
-			}
-
 			if(e.getKeyCode() == e.VK_ESCAPE){
 				Game.gameScreen = Game.GameScreen.LEVELSELECT;
 				game.levelManager.resetField();
 			}
 		}
-		
 	}
 	@Override
 	public void keyReleased(KeyEvent e) {

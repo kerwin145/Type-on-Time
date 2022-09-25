@@ -24,7 +24,6 @@ public class PlayScreen {
                 g.drawImage(Resources.gameBackground, 0, 0, null);
                 break;
 
-
         }
 
         /*
