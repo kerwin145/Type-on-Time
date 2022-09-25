@@ -29,14 +29,14 @@ public class LevelManager {
 			note.incrementPosY();
 
 			//System.out.println("note: " + noteList.get(i).getNoteType() + ", at position: (" + noteList.get(i).getPosX() + ", " + noteList.get(i).getPosY() + ")");
-			if(game.gameMode == game.gameMode.VERTICAL){
+			if(Game.gameMode == Game.GameMode.VERTICAL){
 				if(note.getPosY() > Game.HEIGHT * Game.SCALE){
 					noteMap.put(note.getNoteType(), noteMap.get(note.getNoteType())-1);
 					noteList.remove(note);
 					game.scoreBoard.scoreStreak = 0;
 				}
 				else i++;
-			}else if(game.gameMode == game.gameMode.RADIAL){
+			}else if(Game.gameMode == Game.GameMode.RADIAL){
 				if((note.getPosX() + Note.size / 2 > GameData.rad_miss_horizontal && note.getVelX() > 0) || (note.getPosX() + Note.size / 2 < GameData.rad_miss_horizontal && note.getVelX() < 0)
 				|| (note.getPosY() + Note.size / 2> GameData.rad_miss_vertical && note.getVelY() > 0) || (note.getPosY() + Note.size / 2 < GameData.rad_miss_vertical && note.getVelY() < 0)){
 					noteMap.put(note.getNoteType(), noteMap.get(note.getNoteType())-1);
