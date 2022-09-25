@@ -17,6 +17,13 @@ public class LevelManager {
 			noteMap.put((char)i, 0);
 		}
 	}
+	public void resetField(){
+		noteList.clear();
+		for(int i = 65; i <= 90; i++){
+			noteMap.put((char)i, 0);
+		}
+
+	}
 	
 	public void tick(){
 
