@@ -12,14 +12,15 @@ public class LevelManager {
 
 	public LevelManager(Game game) {
 		this.game = game;
-		for (int i = 65; i <= 90; i++) {
-			noteMap.put((char) i, 0);
+		for(int i = 65; i <= 90; i++){
+			noteMap.put((char)i, 0);
 		}
+
 	}
+	
+	public void tick(){
 
-	public void tick() {
-
-		// update and prune
+		//update and prune
 		int i = 0;
 		while (i < noteList.size()) {
 			Note note = noteList.get(i);

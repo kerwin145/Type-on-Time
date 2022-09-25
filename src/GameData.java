@@ -8,10 +8,6 @@ public class GameData {
     private static int vert_good_range = (int) (Game.HEIGHT * Game.SCALE * .03);
     private static int vert_meh_range = (int) (Game.HEIGHT * Game.SCALE * .05);
 
-    private static int horiz_perfect_range = (int) (Game.HEIGHT * Game.SCALE * .008);;
-    private static int horiz_good_range = (int) (Game.HEIGHT * Game.SCALE * .03);;
-    private static int horiz_meh_range = (int) (Game.HEIGHT * Game.SCALE * .05);;
-
     private static double difficultyConstant = 1.3; // the higher, the easier
     private static int radHeight_perfect_range = (int) (Game.HEIGHT * Game.SCALE * .015 * difficultyConstant);
     private static int radHeight_good_range = (int) (Game.HEIGHT * Game.SCALE * .03 * difficultyConstant);

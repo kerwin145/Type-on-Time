@@ -16,6 +16,7 @@ public class InputHandler implements KeyListener, MouseInputListener {
 		this.game = game;
 		for (int i = 65; i <= 90; i++)
 			keysPressed.put(i, false);
+		
 
 	}
 
@@ -27,15 +28,13 @@ public class InputHandler implements KeyListener, MouseInputListener {
 	@Override
 	public void keyPressed(KeyEvent e) {
 		char noteChar = Character.toUpperCase(e.getKeyChar());
-
-		if (keysPressed.get(e.getKeyCode()) == false) {
-			if (game.levelManager.noteMap.get(noteChar) > 0) {
+		if(keysPressed.get(e.getKeyCode()) == false){
+			if(game.levelManager.noteMap.get(noteChar) > 0){
 				game.levelManager.gradeNote(noteChar);
 				keysPressed.put(e.getKeyCode(), true);
 			}
 		}
 	}
-
 	@Override
 	public void keyReleased(KeyEvent e) {
 		keysPressed.put(e.getKeyCode(), false);
