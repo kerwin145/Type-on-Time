@@ -36,6 +36,14 @@ public class LevelManager {
 					game.scoreBoard.scoreStreak = 0;
 				} else
 					i++;
+			} else if(Game.gameMode == Game.GameMode.HORIZONTAL) {
+				if((note.getPosX() + Note.size / 2 > GameData.horiz_miss_right && note.getVelX() > 0)
+						|| (note.getPosX() + Note.size / 2 < GameData.horiz_miss_left && note.getVelX() < 0)) {
+					noteMap.put(note.getNoteType(), noteMap.get(note.getNoteType()) - 1);
+					noteList.remove(note);
+					game.scoreBoard.scoreStreak = 0;
+				} else
+					i++;
 			} else if (Game.gameMode == Game.GameMode.RADIAL) {
 				if ((note.getPosX() + Note.size / 2 > GameData.rad_miss_horizontal && note.getVelX() > 0)
 						|| (note.getPosX() + Note.size / 2 < GameData.rad_miss_horizontal && note.getVelX() < 0)
@@ -92,6 +100,36 @@ public class LevelManager {
 				game.scoreBoard.scoreStreak++;
 				game.scoreBoard.currentScore += (2 * (1 * game.scoreBoard.scoreStreak * 0.5));
 			} else if (GameData.VERTICAL_MEH.contains(note.getBounds().getX() + note.getBounds().getWidth() / 2,
+					note.getBounds().getY() + note.getBounds().getHeight() / 2)) {
+				game.popupManager.addPopup("MEH", noteX, noteY);
+				noteList.remove(note);
+				noteMap.put(noteChar, noteMap.get(noteChar) - 1);
+
+				game.scoreBoard.currentScore++;
+			} else {// if it is hit too early
+				game.popupManager.addPopup("POOR", noteX, noteY);
+
+				game.scoreBoard.scoreStreak = 0;
+			}
+		} else if (Game.gameMode == Game.GameMode.HORIZONTAL) {
+			if (GameData.HORIZONTAL_PERFECT.contains(note.getBounds().getX() + note.getBounds().getWidth() / 2,
+					note.getBounds().getY() + note.getBounds().getHeight() / 2)) {
+				game.popupManager.addPopup("PERFECT", noteX, noteY);
+				noteList.remove(note);
+				noteMap.put(noteChar, noteMap.get(noteChar) - 1);
+
+				game.scoreBoard.scoreStreak += 1;
+				game.scoreBoard.currentScore += (3 * (2 * game.scoreBoard.scoreStreak * 0.5));
+
+			} else if (GameData.HORIZONTAL_GOOD.contains(note.getBounds().getX() + note.getBounds().getWidth() / 2,
+					note.getBounds().getY() + note.getBounds().getHeight() / 2)) {
+				game.popupManager.addPopup("GOOD", noteX, noteY);
+				noteList.remove(note);
+				noteMap.put(noteChar, noteMap.get(noteChar) - 1);
+
+				game.scoreBoard.scoreStreak++;
+				game.scoreBoard.currentScore += (2 * (1 * game.scoreBoard.scoreStreak * 0.5));
+			} else if (GameData.HORIZONTAL_MEH.contains(note.getBounds().getX() + note.getBounds().getWidth() / 2,
 					note.getBounds().getY() + note.getBounds().getHeight() / 2)) {
 				game.popupManager.addPopup("MEH", noteX, noteY);
 				noteList.remove(note);

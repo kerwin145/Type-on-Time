@@ -30,8 +30,8 @@ public class GameData {
     public static final Rectangle VERTICAL_MEH = new Rectangle(0, vert_yHoriz - vert_meh_range, Game.WIDTH * Game.SCALE,
             vert_meh_range * 2);
 
-    public static int horiz_miss_left;
-    public static int horiz_miss_right;
+    public static int horiz_miss_left = Game.WIDTH / 2 - horiz_meh_range;
+    public static int horiz_miss_right = Game.WIDTH / 2 + horiz_meh_range;
     public static final Rectangle HORIZONTAL_PERFECT = new RectanglePlus(Game.WIDTH / 2 - horiz_perfect_range, 0,
             2 * horiz_perfect_range, Game.HEIGHT);
     public static final Rectangle HORIZONTAL_GOOD = new RectanglePlus(Game.WIDTH / 2 - horiz_good_range, 0,
