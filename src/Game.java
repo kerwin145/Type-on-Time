@@ -40,7 +40,7 @@ public class Game extends Canvas implements Runnable {
         TITLE, PLAY, LEVELSELECT, END
     };
 
-    public static GameScreen gameScreen = GameScreen.LEVELSELECT;
+    public static GameScreen gameScreen = GameScreen.END;
 
     public void init() {
         this.requestFocus();

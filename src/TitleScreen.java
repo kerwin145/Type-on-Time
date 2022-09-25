@@ -17,20 +17,17 @@ public class TitleScreen {
     int buttonWidth = (int) (180 + Game.WIDTH * Game.SCALE * .05);
     int buttonHeight = (int) (buttonWidth * .37);
 
-    Font fntTitle = new Font("Cascadia Code", Font.PLAIN, 35);
+    Font fntButton = new Font("Ink Free", Font.BOLD, 55);
+    Font fntTitle = new Font("MV Boli", Font.PLAIN, 65);
 
-    Rectangle_ playButton = new Rectangle_(0, 0, buttonWidth, buttonHeight, "Play", textPosition.middle, fntTitle,
-            MoColors.dimgray, new Color[] { MoColors.silver },
-            new Color[][] { new Color[] { MoColors.lightGreen, MoColors.paleGreen } }, gradientFormat.vertical, 1, 1,
-            true);
+    int y1 = (int) (30 + Game.HEIGHT * Game.SCALE * .08);
 
-    Rectangle_ exitButton = new Rectangle_(0, 0, buttonWidth, buttonHeight, "Exit", textPosition.middle, fntTitle,
-            MoColors.dimgray, new Color[] { MoColors.silver },
-            new Color[][] { new Color[] { MoColors.lightGreen, MoColors.paleGreen } }, gradientFormat.vertical, 1, 1,
-            true);
+    Rectangle_ playButton = new Rectangle_(0, 0, buttonWidth, buttonHeight, "Play", fntButton);
 
-    Rectangle_ title = new Rectangle_(0, (int) (30 + Game.HEIGHT * Game.SCALE * .05), Game.WIDTH,
-            (int) (10 + Game.HEIGHT * Game.SCALE * .05), "Type on Time");
+    Rectangle_ exitButton = new Rectangle_(0, 0, buttonWidth, buttonHeight, "Exit", fntButton);
+            
+    Rectangle_ title = new Rectangle_(0, y1, Game.WIDTH,
+            (int) (30 + Game.HEIGHT * Game.SCALE * .08), "Type on Time", fntTitle);
     /*
      * public Rectangle_(int x, int y, int width, int height, String text,
      * textPosition textPos, Font font, Color fontColor,
@@ -42,7 +39,7 @@ public class TitleScreen {
     public TitleScreen(Game game) {
         this.game = game;
 
-        DrawFormat.setCentered_xy_spacing(0, Game.WIDTH * Game.SCALE, Game.HEIGHT * Game.SCALE, 0, 0,
+        DrawFormat.setCentered_xy_spacing(y1, Game.WIDTH * Game.SCALE, Game.HEIGHT * Game.SCALE, 0, 0,
                 (int) (buttonHeight * .5),
                 new Rectangle_[][] { new Rectangle_[] { playButton }, new Rectangle_[] { exitButton } });
 
@@ -53,9 +50,10 @@ public class TitleScreen {
 
         g.drawImage(Resources.titleBackground, 0, 0, null);
 
-        title.draw(g2d);
+        g.setColor(MoColors.silver);
         playButton.draw(g2d);
         exitButton.draw(g2d);
+        title.draw(g2d);
 
     }
 }

@@ -124,7 +124,7 @@ public class stringGraphics extends Canvas
         }
     }
     
-    public static void drawStringFlow( String input,  Rectangle rect, textPosition tPos,  Graphics g) {
+    public static void drawStringFlow(String input,  Rectangle rect, textPosition tPos,  Graphics g) {
          Graphics2D g2d = (Graphics2D)g;
          FontRenderContext frc = g2d.getFontRenderContext();
 

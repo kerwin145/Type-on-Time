@@ -40,8 +40,7 @@ public class Rectangle_ extends Rectangle implements Shape{
 	//the size of backgroundColors and borderColors should be the same, but it isn't critical
 	int currentBackgroundColor = 0;
 	int currentBorderColor = 0;
-	int currentText
-	= 0;
+	int currentText = 0;
 	/*An example for the background Color: You have a rectangle with three modes. 
 	 * The first will be a gradient from red to blue
 	 * Second will be solid purple
@@ -73,6 +72,13 @@ public class Rectangle_ extends Rectangle implements Shape{
 	public Rectangle_(int x, int y, int width, int height, String s){
         super(x, y, width, height);
         text.add(s);
+    }
+
+	public Rectangle_(int x, int y, int width, int height, String s, Font fnt){
+        super(x, y, width, height);
+        text.add(s);
+		this.font = fnt;
+		System.out.println("Font and string: " + s);
     }
 
     //the maximum constructor with arraylists
@@ -307,7 +313,7 @@ public class Rectangle_ extends Rectangle implements Shape{
 	    			g.setColor(getSelectedColor(fontColor, 1));
 	    	}else 
 	    	*/
-	    		g.setColor(fontColor);
+			g.setColor(fontColor);
     	}
 
     	if(text.size() > 0) {
@@ -317,9 +323,12 @@ public class Rectangle_ extends Rectangle implements Shape{
 	            stringGraphics.drawStringFlow(s, this.getBounds(), textPosition.top, g);
 	    	}else if(textPos == textPosition.middle) {
 	            stringGraphics.drawStringFlow(s, this.getBounds(), textPosition.middle, g);
+				System.out.println("Drawing:  " + s);
+
 	    	}else if (textPos == textPosition.left) { //centers on y axis
 	    		g.drawString(s, x, (int) (y + height));
-	    	}
+	    	}else{
+			}
     	}
 
     }

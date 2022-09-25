@@ -63,6 +63,7 @@ public class LevelManager {
 				} else
 					i++;
 			}
+			
 
 		}
 	}
