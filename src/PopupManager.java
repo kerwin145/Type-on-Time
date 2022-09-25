@@ -2,6 +2,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.ArrayList;
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -22,8 +23,11 @@ public class PopupManager{
 
     public void addPopup(String result, double x, double y){
         //cap it to reduce chance of comod
-        if(popUpList.size() <= 5)
+        try{
             popUpList.add(new Popup(result, x, y));
+        }catch(ConcurrentModificationException e){
+            System.out.println("Comodification: UwU list is busy!");
+        }
     }
 
     public void tick(){
@@ -70,7 +74,7 @@ class Popup {
             case "GOOD":
                 c = MoColors.royalBlue;
                 break;
-            case "BAD":
+            case "MEH":
                 c = MoColors.crimson;
             case "POOR":
                 c = MoColors.silver;
@@ -90,8 +94,6 @@ class Popup {
 
     public void render(Graphics g) {
         Graphics2D g2d = (Graphics2D) g;
-
-        System.out.println(alpha);
         
         if(alpha >= 0)
             
@@ -102,8 +104,8 @@ class Popup {
 
     public void tick(){
         currentTime = Game.universalTime;
-        //alpha starts at 255, at 45 ticks (3/4 seconds), it goes to 0. 
-        alpha = -1 * Math.pow((currentTime - startTime) , 2 ) * 0.1259259259 + 255;
+        //alpha starts at 255, at 75 ticks (5/4 seconds), it goes to 0. 
+        alpha = -1 * Math.pow((currentTime - startTime) , 2 ) * .04533333333 + 255;
     }
 
     public int getAlpha(){

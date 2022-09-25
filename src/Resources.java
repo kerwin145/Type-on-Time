@@ -14,13 +14,15 @@ import java.io.IOException;
 public class Resources {
     public static BufferedImage titleBackground;
     public static BufferedImage gameBackground;
+    public static BufferedImage radialBackground;
 
     public static Font fntTitle;
 
     public Resources(){
         try {
             titleBackground = ImageIO.read(new File("Resources/TitleBackground.png"));
-            gameBackground = ImageIO.read(new File("Resources/GameBackground.png"));
+            gameBackground = ImageIO.read(new File("Resources/HorizontalBackground.png"));
+            radialBackground = ImageIO.read(new File("Resources/RadialBackground.png"));
         } 
         catch (IOException e) 
         {
