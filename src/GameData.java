@@ -17,7 +17,7 @@ public class GameData{
     
     public static double onScreenTime = 8;
     
-    public  static int vert_miss = (int)(.95 * Game.HEIGHT * Game.SCALE);
+    public static int vert_miss = (int)(.95 * Game.HEIGHT * Game.SCALE);
     public static final Rectangle VERTICAL_PERFECT = new Rectangle(0, vert_yHoriz - vert_perfect_range, Game.WIDTH * Game.SCALE, vert_perfect_range*2);
     public static final Rectangle VERTICAL_GOOD = new Rectangle(0, vert_yHoriz - vert_good_range, Game.WIDTH * Game.SCALE, vert_good_range*2);
     public static final Rectangle VERTICAL_MEH = new Rectangle(0, vert_yHoriz - vert_meh_range, Game.WIDTH * Game.SCALE, vert_meh_range*2);
@@ -25,6 +25,7 @@ public class GameData{
     public static final int HORIZONTAL_X_HORIZON = (int)(.5 * Game.HEIGHT * Game.SCALE);
 
     // there is no ellipse object, just pseudo stuff for Ellipse(center x coord, center y coord, x radius, y radius)
+    public static int rad_miss = (int)(Game.WIDTH / 2);
     public static final Ellipse RADIAL_PERFECT = new Ellipse((int) (Game.WIDTH * Game.SCALE / 2), (int) (Game.HEIGHT * Game.SCALE / 2), radHeight_perfect_range * 2, radWidth_perfect_range * 2);
     public static final Ellipse RADIAL_GOOD = new Ellipse((int) (Game.WIDTH * Game.SCALE / 2), (int) (Game.HEIGHT * Game.SCALE / 2), radHeight_good_range * 2, radWidth_good_range * 2);
     public static final Ellipse RADIAL_MEH = new Ellipse((int) (Game.WIDTH * Game.SCALE / 2), (int) (Game.HEIGHT * Game.SCALE / 2), radHeight_meh_range * 2, radWidth_meh_range * 2);
