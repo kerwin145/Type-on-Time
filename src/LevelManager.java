@@ -65,7 +65,7 @@ public class LevelManager {
 
 				game.scoreBoard.scoreStreak = 0;
 			}
-			else if(note.getBounds().intersects(GameData.VERTICAL_PERFECT)){
+			else if(GameData.VERTICAL_PERFECT.contains(note.getBounds().getX() + note.getBounds().getWidth() / 2, note.getBounds().getY() + note.getBounds().getHeight() / 2)) {
 				System.out.println("PERFECT!");
 				noteList.remove(note);
 				noteMap.put(noteChar, noteMap.get(noteChar)-1);
@@ -74,7 +74,7 @@ public class LevelManager {
 				game.scoreBoard.currentScore+=(3*(2*game.scoreBoard.scoreStreak*0.5));
 			
 			}
-			else if(note.getBounds().intersects(GameData.VERTICAL_GOOD)){
+			else if(GameData.VERTICAL_GOOD.contains(note.getBounds().getX() + note.getBounds().getWidth() / 2, note.getBounds().getY() + note.getBounds().getHeight() / 2)){
 				System.out.println("GOOD");
 				noteList.remove(note);
 				noteMap.put(noteChar, noteMap.get(noteChar)-1);
@@ -82,7 +82,7 @@ public class LevelManager {
 				game.scoreBoard.scoreStreak++;
 				game.scoreBoard.currentScore+=(2*(1*game.scoreBoard.scoreStreak*0.5));
 			}
-			else if(note.getBounds().intersects(GameData.VERTICAL_MEH)){
+			else if(GameData.VERTICAL_MEH.contains(note.getBounds().getX() + note.getBounds().getWidth() / 2, note.getBounds().getY() + note.getBounds().getHeight() / 2)) {
 				System.out.println("MEH");
 				noteList.remove(note);
 				noteMap.put(noteChar, noteMap.get(noteChar)-1);
