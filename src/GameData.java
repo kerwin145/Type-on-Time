@@ -2,9 +2,9 @@ import java.awt.Rectangle;
 
 public class GameData{
     private static final int vert_yHoriz = (int)(.85 * Game.HEIGHT * Game.SCALE);
-    private static int vert_perfect_range = (int)(Game.HEIGHT * Game.SCALE * .008);
-    private static int vert_good_range = (int)(Game.HEIGHT * Game.SCALE * .03);
-    private static int vert_bad_range = (int)(Game.HEIGHT * Game.SCALE * .05);
+    public static int vert_perfect_range = (int)(Game.HEIGHT * Game.SCALE * .008);
+    public static int vert_good_range = (int)(Game.HEIGHT * Game.SCALE * .03);
+    public static int vert_bad_range = (int)(Game.HEIGHT * Game.SCALE * .05);
     
     
     public static double onScreenTime = 8;

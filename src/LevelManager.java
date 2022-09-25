@@ -56,15 +56,18 @@ public class LevelManager {
 			return;
 		}
 
+		double noteX = note.getPosX(), noteY = note.getPosY();
+
 		if(Game.gameMode == Game.GameMode.VERTICAL){
 			//check if the note can be graded (poor and miss checked first)
 			if(note.getPosY() > GameData.vert_miss){
-				System.out.println("MISS");
+				game.popupManager.addPopup("MISS", noteX, noteY);
 				//tick will automatically prune the note when it passes bottom of screen
 				noteMap.put(noteChar, noteMap.get(noteChar)-1);
+
 			}
 			else if(note.getBounds().intersects(GameData.VERTICAL_PERFECT)){
-				System.out.println("PERFECT!");
+				game.popupManager.addPopup("PERFECT", noteX, noteY);
 				noteList.remove(note);
 				noteMap.put(noteChar, noteMap.get(noteChar)-1);
 
@@ -73,7 +76,7 @@ public class LevelManager {
 			
 			}
 			else if(note.getBounds().intersects(GameData.VERTICAL_GOOD)){
-				System.out.println("GOOD");
+				game.popupManager.addPopup("GOOD", noteX, noteY);
 				noteList.remove(note);
 				noteMap.put(noteChar, noteMap.get(noteChar)-1);
 
@@ -81,7 +84,7 @@ public class LevelManager {
 				game.scoreBoard.currentScore+=(2*(1*game.scoreBoard.scoreStreak*0.5));
 			}
 			else if(note.getBounds().intersects(GameData.VERTICAL_BAD)){
-				System.out.println("BAD");
+				game.popupManager.addPopup("BAD", noteX, noteY);
 				noteList.remove(note);
 				noteMap.put(noteChar, noteMap.get(noteChar)-1);
 
@@ -89,7 +92,7 @@ public class LevelManager {
 				game.scoreBoard.scoreStreak = 0;
 			}
 			else{//if it is hit too early
-				System.out.println("POOR");
+				game.popupManager.addPopup("POOR", noteX, noteY);
 			}
 		}   
 	}
