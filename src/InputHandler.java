@@ -22,11 +22,12 @@ public class InputHandler implements KeyListener, MouseInputListener {
 	
 	@Override
 	public void keyTyped(KeyEvent e) {
-		
+	
 	}
 	@Override
 	public void keyPressed(KeyEvent e) {
 		char noteChar = Character.toUpperCase(e.getKeyChar());
+		
 		if(keysPressed.get(e.getKeyCode()) == false){
 			if(game.levelManager.noteMap.get(noteChar) > 0){
 				game.levelManager.gradeNote(noteChar);
