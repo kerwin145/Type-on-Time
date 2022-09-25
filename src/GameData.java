@@ -12,7 +12,7 @@ public class GameData{
     public  static int vert_miss = (int)(.95 * Game.HEIGHT * Game.SCALE);
     public static final Rectangle VERTICAL_PERFECT = new Rectangle(0, vert_yHoriz - vert_perfect_range, Game.WIDTH * Game.SCALE, vert_perfect_range*2);
     public static final Rectangle VERTICAL_GOOD = new Rectangle(0, vert_yHoriz - vert_good_range, Game.WIDTH * Game.SCALE, vert_good_range*2);
-    public static final Rectangle VERTICAL_BAD = new Rectangle(0, vert_yHoriz - vert_bad_range, Game.WIDTH * Game.SCALE, vert_bad_range*2);
+    public static final Rectangle VERTICAL_MEH = new Rectangle(0, vert_yHoriz - vert_bad_range, Game.WIDTH * Game.SCALE, vert_bad_range*2);
 
     public static final int HORIZONTAL_X_HORIZON = (int)(.5 * Game.HEIGHT * Game.SCALE);
 }

@@ -62,6 +62,8 @@ public class LevelManager {
 				System.out.println("MISS");
 				//tick will automatically prune the note when it passes bottom of screen
 				noteMap.put(noteChar, noteMap.get(noteChar)-1);
+
+				game.scoreBoard.scoreStreak = 0;
 			}
 			else if(note.getBounds().intersects(GameData.VERTICAL_PERFECT)){
 				System.out.println("PERFECT!");
@@ -80,16 +82,17 @@ public class LevelManager {
 				game.scoreBoard.scoreStreak++;
 				game.scoreBoard.currentScore+=(2*(1*game.scoreBoard.scoreStreak*0.5));
 			}
-			else if(note.getBounds().intersects(GameData.VERTICAL_BAD)){
-				System.out.println("BAD");
+			else if(note.getBounds().intersects(GameData.VERTICAL_MEH)){
+				System.out.println("MEH");
 				noteList.remove(note);
 				noteMap.put(noteChar, noteMap.get(noteChar)-1);
 
 				game.scoreBoard.currentScore++;
-				game.scoreBoard.scoreStreak = 0;
 			}
 			else{//if it is hit too early
 				System.out.println("POOR");
+
+				game.scoreBoard.scoreStreak = 0;
 			}
 		}   
 	}
