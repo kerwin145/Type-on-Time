@@ -19,13 +19,18 @@ public class PlayScreen{
     }
 
     public void render(Graphics g){
-        Graphics2D g2d = (Graphics2D) g;
-		g.setColor(Color.red);
+        g.drawImage(Resources.gameBackground, 0, 0, null);
+
+        /*
         g2d.fill(GameData.VERTICAL_BAD);
         g.setColor(Color.yellow);
         g2d.fill(GameData.VERTICAL_GOOD);
         g.setColor(Color.green);
         g2d.fill(GameData.VERTICAL_PERFECT);
+         */
+
+        //Graphics2D g2d = (Graphics2D) g;
+       
 		
     }
 }

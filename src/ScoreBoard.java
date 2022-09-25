@@ -38,6 +38,8 @@ public class ScoreBoard {
 		g.drawString("High: " + highestScoreS, numPosX+1, numPosY+21);
 		g.setColor(Color.MAGENTA);
 		g.drawString("Streak: " + scoreStreakS, numPosX+1, numPosY+55);
+
+		
 	}
 
 	public void tick(){

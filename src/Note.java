@@ -1,3 +1,4 @@
+import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -7,7 +8,12 @@ public class Note {
 	private double posX, posY;
 	private double velX;
 	private double velY;
-	public static int size = 15;
+	public static int size = 30
+	
+	
+	
+	
+	;
 	//font size would be the size variable
 	private char noteType;
 	//represents letter/number of object
@@ -25,9 +31,10 @@ public class Note {
 				
 		Font fntTest = new Font("Verdana", Font.BOLD, size);
 		g.setFont(fntTest);
+		g.setColor(Color.black);
 		
 		g.drawString("" + noteType, (int)posX, (int)posY);
-		
+
 		//g2d.draw(getBounds());
 
 		
@@ -48,7 +55,7 @@ public class Note {
 	}
 
 	public void incrementPosX(){
-		posX += velX;
+		posX += velX / 60;
 	}
 
 	public double getPosY() {
@@ -73,7 +80,7 @@ public class Note {
 	}
 
 	public void setVelX(double velX) {
-		this.velX = velX / 60;
+		this.velX = velX;
 	}
 
 	public double getVelY() {

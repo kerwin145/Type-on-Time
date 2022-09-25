@@ -76,18 +76,19 @@ public class CharSpawner {
 					if(random1 < 0.5) {
 						posX = -Note.size;
 						posY = (int) (Math.round((Math.random()) * Game.HEIGHT) - Note.size / 2);
-						velX = (Game.WIDTH) / GameData.onScreenTime;
+						velX = Game.WIDTH / GameData.onScreenTime;
 					} else {
 						posX = Game.WIDTH;
-						posY = (int) (Math.round((Math.random()) * Game.HEIGHT) - Note.size / 2);
-						velX = -(Game.WIDTH) / GameData.onScreenTime;
+						posY = (int) (Math.round((Math.random()) * (Game.HEIGHT - Note.size / 2)));
+						velX = -Game.WIDTH / GameData.onScreenTime;
 					}
+					System.out.println("Horizontal char spawn velX: " + velX);
 					break;
 				case VERTICAL:
 					posX = (int) (Math.round((Math.random()) * Game.WIDTH) - Note.size / 2);
 					posY = -Note.size;
 					velY = Game.HEIGHT / GameData.onScreenTime;
-					System.out.println("At charspawner 78: PosX: " + posX + ", posY: " + posY + ", velX: " +  velX+ ", velY: " + velY );
+					//System.out.println("At charspawner 78: PosX: " + posX + ", posY: " + posY + ", velX: " +  velX+ ", velY: " + velY );
 
 					break;
 				case RADIAL:
@@ -95,23 +96,23 @@ public class CharSpawner {
 					if(random2 < Game.WIDTH) { // TOP
 						posX = (int) (Math.round((Math.random()) * Game.WIDTH) - Note.size / 2);
 						posY = -Note.size;
-						velX = ((posX + Note.size / 2) - Game.WIDTH / 2) / GameData.onScreenTime;
+						velX = -((posX + Note.size / 2) - Game.WIDTH / 2) / GameData.onScreenTime;
 						velY = (Game.HEIGHT / 2) / GameData.onScreenTime;
 					} else if(random2 < Game.WIDTH + Game.HEIGHT) { // RIGHT
 						posX = Game.WIDTH;
 						posY = (int) (Math.round((Math.random()) * Game.HEIGHT) - Note.size / 2);
 						velX = -(Game.WIDTH / 2) / GameData.onScreenTime; 
-						velY = ((posX + Note.size / 2) - Game.HEIGHT / 2) / GameData.onScreenTime;
+						velY = -((posY + Note.size / 2) - Game.HEIGHT / 2) / GameData.onScreenTime;
 					} else if(random2 < Game.WIDTH * 2 + Game.HEIGHT) { // BOTTOM
 						posX = (int) (Math.round((Math.random()) * Game.WIDTH) - Note.size / 2);
 						posY = Game.HEIGHT;
-						velX = ((posX + Note.size / 2) - Game.WIDTH / 2) / GameData.onScreenTime;
+						velX = -((posX + Note.size / 2) - Game.WIDTH / 2) / GameData.onScreenTime;
 						velY = -(Game.HEIGHT / 2) / GameData.onScreenTime;
 					} else { // LEFT
 						posX = -Note.size;
 						posY = (int) (Math.round((Math.random()) * Game.HEIGHT) - Note.size / 2);
 						velX = (Game.WIDTH / 2) / GameData.onScreenTime; 
-						velY = ((posX + Note.size / 2) - Game.HEIGHT / 2) / GameData.onScreenTime	;
+						velY = -((posY + Note.size / 2) - Game.HEIGHT / 2) / GameData.onScreenTime	;
 					}
 					break;
 			}
