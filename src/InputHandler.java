@@ -44,9 +44,21 @@ public class InputHandler implements KeyListener, MouseInputListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
+	}
+	
+	@Override
+	public void mousePressed(MouseEvent e) {
+		mx = e.getX(); 
+		my = e.getY();		
+		
 		if (Game.gameScreen == Game.GameScreen.LEVELSELECT){
+			System.out.println("PRESSED? " + mx  + ", " + my);
+			System.out.println(game.levelSelectScreen.verticalSelect.getBounds().toString());
+
 			if (clickInBounds(game.levelSelectScreen.verticalSelect.getBounds())){
 				Game.gameMode = Game.GameMode.VERTICAL;
+				Game.gameScreen = Game.GameScreen.PLAY;
+				System.out.println("PLAYING?");
 			} else if (clickInBounds(game.levelSelectScreen.horizontalSelect.getBounds())){
 				Game.gameMode = Game.GameMode.HORIZONTAL;
 			} else if (clickInBounds(game.levelSelectScreen.radialSelect.getBounds())){
@@ -54,10 +66,6 @@ public class InputHandler implements KeyListener, MouseInputListener {
 			} else if (clickInBounds(game.levelSelectScreen.increaseSelect.getBounds())) GameData.onScreenTime += 0.25;
 			else if (clickInBounds(game.levelSelectScreen.decreaseSelect.getBounds())) GameData.onScreenTime -= 0.25;
 		}
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
 		
 	}
 
@@ -83,8 +91,7 @@ public class InputHandler implements KeyListener, MouseInputListener {
 
 	@Override
 	public void mouseMoved(MouseEvent e) {
-		mx = e.getX(); 
-		my = e.getY();		
+		
 	}
 
 				

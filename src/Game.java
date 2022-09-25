@@ -40,12 +40,13 @@ public class Game extends Canvas implements Runnable{
      
     public void init() {
         this.requestFocus();
+        this.addKeyListener(inputHandler);
+        this.addMouseListener(inputHandler);
    
     }
     	
 	public Game() {
 		running = false;
-        this.addKeyListener(inputHandler);
 	}
 	
 	public void run() {
