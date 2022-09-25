@@ -27,6 +27,8 @@ public class Game extends Canvas implements Runnable{
     public TitleScreen titleScreen = new TitleScreen(this);
     public PlayScreen playScreen = new PlayScreen(this);
     public LevelSelectScreen levelSelectScreen = new LevelSelectScreen();
+    public EndScreen endScreen = new EndScreen(this);
+
     public InputHandler inputHandler = new InputHandler(this);
 
     public static int universalTime = 0;
@@ -34,8 +36,8 @@ public class Game extends Canvas implements Runnable{
     public static enum GameMode{HORIZONTAL, VERTICAL, RADIAL};
     public static GameMode gameMode = GameMode.RADIAL;
 
-    public static enum GameScreen{TITLE, PLAY, LEVELSELECT};
-    public static GameScreen gameScreen = GameScreen.LEVELSELECT;
+    public static enum GameScreen{TITLE, PLAY, LEVELSELECT, END};
+    public static GameScreen gameScreen = GameScreen.END;
      
      
     public void init() {
@@ -122,6 +124,9 @@ public class Game extends Canvas implements Runnable{
             break;
             case LEVELSELECT:
             levelSelectScreen.render(g);
+            break;
+            case END:
+            endScreen.render(g);
             break;
         }
         
