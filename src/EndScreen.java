@@ -3,12 +3,13 @@ import DrawUtil.Rectangle_.gradientFormat;
 import DrawUtil.Rectangle_.textPosition;
 import DrawUtil.DrawFormat;
 import DrawUtil.MoColors;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
+
+import javax.xml.stream.events.EndElement;
 
 public class EndScreen{
 
@@ -17,10 +18,11 @@ public class EndScreen{
     int buttonHeight = (int)(buttonWidth * .37);
     
     Font fntTitle = new Font("Cascadia Code", Font.PLAIN, 35);
+    Font fntMsg = new Font("Cascadia Code", Font.PLAIN, 40);
     
     Rectangle_ retryButton = new Rectangle_(0,0, buttonWidth, buttonHeight, "Retry", textPosition.middle, fntTitle, MoColors.dimgray, new Color[]{MoColors.silver}, new Color[][]{new Color[]{MoColors.lightGreen, MoColors.paleTurqouise}}, gradientFormat.vertical, 1, 1, true);
 
-    Rectangle_ exitButton = new Rectangle_(0,0, buttonWidth, buttonHeight, "Exit", textPosition.middle, fntTitle, MoColors.dimgray, new Color[]{MoColors.silver}, new Color[][]{new Color[]{MoColors.lightGreen, MoColors.paleTurqouise}}, gradientFormat.vertical, 1, 1, true);
+    Rectangle_ exitButton = new Rectangle_(0,0, buttonWidth, buttonHeight, "Back to Title", textPosition.middle, fntTitle, MoColors.dimgray, new Color[]{MoColors.silver}, new Color[][]{new Color[]{MoColors.lightGreen, MoColors.paleTurqouise}}, gradientFormat.vertical, 1, 1, true);
          
     Rectangle_ endMessage; 
     /*
@@ -29,25 +31,20 @@ public class EndScreen{
 
      */
 
-
     public EndScreen(Game game){
         this.game = game;
 
         DrawFormat.setCentered_xy_spacing( 0,Game.WIDTH*game.SCALE, game.HEIGHT*game.SCALE,0,0, (int)(buttonHeight * .5), 
         new Rectangle_[][]{new Rectangle_[]{retryButton}, new Rectangle_[]{exitButton}});
-
-        endMessage =  new Rectangle_(0,0, buttonWidth, buttonHeight, "Game Over! Your Score is: " + game.scoreBoard.currentScore, textPosition.middle, fntTitle, MoColors.dimgray, new Color[]{MoColors.silver}, new Color[][]{new Color[]{MoColors.lightGreen, MoColors.paleTurqouise}}, gradientFormat.vertical, 1, 1, true);
- 
-      
     }
 
     public void render(Graphics g){
         Graphics2D g2d = (Graphics2D) g;
 
         g.drawImage(Resources.titleBackground, 0, 0, null);
-
-       
-        endMessage.draw(g2d);
+        g.setColor(MoColors.turquoise);
+        g.setFont(new Font("", Font.PLAIN, 40));
+        g.drawString("Game Over!\n Your Score is " + game.scoreBoard.currentScore, (Game.WIDTH/2)-250, 200);
         retryButton.draw(g2d);
         exitButton.draw(g2d);
 

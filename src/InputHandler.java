@@ -50,8 +50,14 @@ public class InputHandler implements KeyListener, MouseInputListener {
 	public void mousePressed(MouseEvent e) {
 		mx = e.getX(); 
 		my = e.getY();		
-
-		if (Game.gameScreen == Game.GameScreen.LEVELSELECT){
+		if (Game.gameScreen == Game.GameScreen.TITLE){
+			if (clickInBounds(game.titleScreen.playButton.getBounds())) {
+				Game.gameScreen = Game.GameScreen.LEVELSELECT;
+			} else if (clickInBounds(game.titleScreen.exitButton.getBounds())){
+				System.exit(0);
+			}
+		}
+		else if (Game.gameScreen == Game.GameScreen.LEVELSELECT){
 			// System.out.println("PRESSED? " + mx  + ", " + my);
 			// System.out.println(game.levelSelectScreen.verticalSelect.getBounds().toString());
 
@@ -70,6 +76,14 @@ public class InputHandler implements KeyListener, MouseInputListener {
 			} else if (clickInBounds(game.levelSelectScreen.increaseSelect.getBounds())) GameData.onScreenTime += 0.25;
 			else if (clickInBounds(game.levelSelectScreen.decreaseSelect.getBounds())) GameData.onScreenTime -= 0.25;
 		}
+		else if (Game.gameScreen == Game.GameScreen.END){
+			if (clickInBounds(game.endScreen.retryButton.getBounds())) {
+				Game.gameScreen = Game.GameScreen.LEVELSELECT;
+			} else if (clickInBounds(game.endScreen.exitButton.getBounds())){
+				Game.gameScreen = Game.GameScreen.TITLE;
+			}
+		}
+
 		
 	}
 
