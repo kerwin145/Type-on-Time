@@ -37,12 +37,15 @@ public class LevelSelectScreen {
         button.draw(g2d);
     } 
     g.setColor(MoColors.darkBlue);
+    g.setFont(new Font("Verdana", Font.PLAIN, 24));
+    g.drawString("Select Level Type: ", 50, 350);
     g.setFont(new Font("Verdana", Font.PLAIN, 26));
     //DrawUtil.stringGraphics.drawStringCentered("Time Letters are on Screen: ", speedRectangle, g2d);
-    g.drawString("Time Letters are on Screen: ", 290, 638);
+    g.drawString("Time Letters are on Screen (Lower Is Faster): ", 290, 638);
     g.setFont(new Font("Verdana", Font.BOLD, 32));
-    g.drawString("Select Level Type: ", Font.BOLD, 32);
+    
     g.drawString("Level Select", 573, 100);
+    g.drawString(GameData.onScreenTime+"", 920, 640);
     
 
    
