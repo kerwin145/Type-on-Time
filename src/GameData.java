@@ -1,24 +1,20 @@
 import java.awt.Rectangle;
 
+import DrawUtil.RectanglePlus;
+
 public class GameData {
     private static final int vert_yHoriz = (int) (.85 * Game.HEIGHT * Game.SCALE);
     private static int vert_perfect_range = (int) (Game.HEIGHT * Game.SCALE * .008);
     private static int vert_good_range = (int) (Game.HEIGHT * Game.SCALE * .03);
     private static int vert_meh_range = (int) (Game.HEIGHT * Game.SCALE * .05);
 
-public class GameData{
-    private static final int vert_yHoriz = (int)(.85 * Game.HEIGHT * Game.SCALE);
-    private static int vert_perfect_range = (int)(Game.HEIGHT * Game.SCALE * .008);
-    private static int vert_good_range = (int)(Game.HEIGHT * Game.SCALE * .03);
-    private static int vert_meh_range = (int)(Game.HEIGHT * Game.SCALE * .05);
-
-    private static double difficultyConstant = 1.3; //the higher, the easier
-    private static int radHeight_perfect_range = (int)(Game.HEIGHT * Game.SCALE * .015 * difficultyConstant);
-    private static int radHeight_good_range = (int)(Game.HEIGHT * Game.SCALE * .03 * difficultyConstant);
-    private static int radHeight_meh_range = (int)(Game.HEIGHT * Game.SCALE * .05 * difficultyConstant);
-    private static int radWidth_perfect_range = (int)(Game.WIDTH * Game.SCALE * .02667 * difficultyConstant);
-    private static int radWidth_good_range = (int)(Game.WIDTH * Game.SCALE * .05336 * difficultyConstant);
-    private static int radWidth_meh_range = (int)(Game.WIDTH * Game.SCALE * .08893 * difficultyConstant);
+    private static double difficultyConstant = 1.3; // the higher, the easier
+    private static int radHeight_perfect_range = (int) (Game.HEIGHT * Game.SCALE * .015 * difficultyConstant);
+    private static int radHeight_good_range = (int) (Game.HEIGHT * Game.SCALE * .03 * difficultyConstant);
+    private static int radHeight_meh_range = (int) (Game.HEIGHT * Game.SCALE * .05 * difficultyConstant);
+    private static int radWidth_perfect_range = (int) (Game.WIDTH * Game.SCALE * .02667 * difficultyConstant);
+    private static int radWidth_good_range = (int) (Game.WIDTH * Game.SCALE * .05336 * difficultyConstant);
+    private static int radWidth_meh_range = (int) (Game.WIDTH * Game.SCALE * .08893 * difficultyConstant);
 
     public static double onScreenTime = 8;
 
@@ -29,6 +25,15 @@ public class GameData{
             Game.WIDTH * Game.SCALE, vert_good_range * 2);
     public static final Rectangle VERTICAL_MEH = new Rectangle(0, vert_yHoriz - vert_meh_range, Game.WIDTH * Game.SCALE,
             vert_meh_range * 2);
+
+    public static int horiz_miss_left;
+    public static int horiz_miss_right;
+    public static final Rectangle HORIZONTAL_PERFECT = new RectanglePlus(Game.WIDTH / 2 - horiz_perfect_range, 0,
+            2 * horiz_perfect_range, Game.HEIGHT);
+    public static final Rectangle HORIZONTAL_GOOD = new RectanglePlus(Game.WIDTH / 2 - horiz_good_range, 0,
+            2 * horiz_good_range, Game.HEIGHT);
+    public static final Rectangle HORIZONTAL_MEH = new RectanglePlus(Game.WIDTH / 2 - horiz_meh_range, 0,
+            2 * horiz_meh_range, Game.HEIGHT);
 
     public static final int HORIZONTAL_X_HORIZON = (int) (.5 * Game.HEIGHT * Game.SCALE);
 
