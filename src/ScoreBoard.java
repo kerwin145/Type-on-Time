@@ -9,20 +9,19 @@ public class ScoreBoard {
 	public int currentScore = 0;
 	public int highestScore = 0;
 	public int scoreStreak = 0;
-	private int numPosX =  1300;
+	private int numPosX = 1300;
 	private int numPosY = 15;
 	public static int numSize = 20;
 
-	public ScoreBoard(Game game){
+	public ScoreBoard(Game game) {
 		this.game = game;
 	}
 
 	public void render(Graphics g) {
 
-		Graphics2D g2d = (Graphics2D)g;	
-		Font fntTest = new Font("Verdana", Font.BOLD, numSize);
+		Graphics2D g2d = (Graphics2D) g;
+		// Font fntTest = new Font("Verdana", Font.BOLD, numSize);
 
-	
 		g2d.draw(createBorder());
 		g2d.draw(createBorderStreak());
 
@@ -34,15 +33,14 @@ public class ScoreBoard {
 		String scoreStreakS = scoreStreakI.toString();
 
 		g.setColor(Color.RED);
-		g.drawString("Current: " + currentScoreS, numPosX+1, numPosY+11);
-		g.drawString("High: " + highestScoreS, numPosX+1, numPosY+21);
+		g.drawString("Current: " + currentScoreS, numPosX + 1, numPosY + 11);
+		g.drawString("High: " + highestScoreS, numPosX + 1, numPosY + 21);
 		g.setColor(Color.MAGENTA);
-		g.drawString("Streak: " + scoreStreakS, numPosX+1, numPosY+55);
+		g.drawString("Streak: " + scoreStreakS, numPosX + 1, numPosY + 55);
 
-		
 	}
 
-	public void tick(){
+	public void tick() {
 		String currentScoreS = "" + currentScore;
 	}
 
@@ -51,7 +49,6 @@ public class ScoreBoard {
 	}
 
 	public Rectangle createBorderStreak() {
-		return new Rectangle(numPosX+1, numPosY+40, 60, 20);
+		return new Rectangle(numPosX + 1, numPosY + 40, 60, 20);
 	}
-	
 }

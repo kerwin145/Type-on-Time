@@ -1,4 +1,3 @@
-
 import DrawUtil.Rectangle_;
 import DrawUtil.Rectangle_.gradientFormat;
 import DrawUtil.Rectangle_.textPosition;
@@ -10,27 +9,25 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 
-public class TitleScreen {
+public class EndScreen {
 
     Game game;
-
     int buttonWidth = (int) (180 + Game.WIDTH * Game.SCALE * .05);
     int buttonHeight = (int) (buttonWidth * .37);
 
     Font fntTitle = new Font("Cascadia Code", Font.PLAIN, 35);
 
-    Rectangle_ playButton = new Rectangle_(0, 0, buttonWidth, buttonHeight, "Play", textPosition.middle, fntTitle,
+    Rectangle_ retryButton = new Rectangle_(0, 0, buttonWidth, buttonHeight, "Retry", textPosition.middle, fntTitle,
             MoColors.dimgray, new Color[] { MoColors.silver },
-            new Color[][] { new Color[] { MoColors.lightGreen, MoColors.paleGreen } }, gradientFormat.vertical, 1, 1,
-            true);
+            new Color[][] { new Color[] { MoColors.lightGreen, MoColors.paleTurqouise } }, gradientFormat.vertical, 1,
+            1, true);
 
     Rectangle_ exitButton = new Rectangle_(0, 0, buttonWidth, buttonHeight, "Exit", textPosition.middle, fntTitle,
             MoColors.dimgray, new Color[] { MoColors.silver },
-            new Color[][] { new Color[] { MoColors.lightGreen, MoColors.paleGreen } }, gradientFormat.vertical, 1, 1,
-            true);
+            new Color[][] { new Color[] { MoColors.lightGreen, MoColors.paleTurqouise } }, gradientFormat.vertical, 1,
+            1, true);
 
-    Rectangle_ title = new Rectangle_(0, (int) (30 + Game.HEIGHT * Game.SCALE * .05), Game.WIDTH,
-            (int) (10 + Game.HEIGHT * Game.SCALE * .05), "Type on Time");
+    Rectangle_ endMessage;
     /*
      * public Rectangle_(int x, int y, int width, int height, String text,
      * textPosition textPos, Font font, Color fontColor,
@@ -39,12 +36,18 @@ public class TitleScreen {
      * 
      */
 
-    public TitleScreen(Game game) {
+    public EndScreen(Game game) {
         this.game = game;
 
         DrawFormat.setCentered_xy_spacing(0, Game.WIDTH * Game.SCALE, Game.HEIGHT * Game.SCALE, 0, 0,
                 (int) (buttonHeight * .5),
-                new Rectangle_[][] { new Rectangle_[] { playButton }, new Rectangle_[] { exitButton } });
+                new Rectangle_[][] { new Rectangle_[] { retryButton }, new Rectangle_[] { exitButton } });
+
+        endMessage = new Rectangle_(0, 0, buttonWidth, buttonHeight,
+                "Game Over! Your Score is: " + game.scoreBoard.currentScore, textPosition.middle, fntTitle,
+                MoColors.dimgray, new Color[] { MoColors.silver },
+                new Color[][] { new Color[] { MoColors.lightGreen, MoColors.paleTurqouise } }, gradientFormat.vertical,
+                1, 1, true);
 
     }
 
@@ -53,8 +56,8 @@ public class TitleScreen {
 
         g.drawImage(Resources.titleBackground, 0, 0, null);
 
-        title.draw(g2d);
-        playButton.draw(g2d);
+        endMessage.draw(g2d);
+        retryButton.draw(g2d);
         exitButton.draw(g2d);
 
     }
