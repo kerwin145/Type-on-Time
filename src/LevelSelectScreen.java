@@ -15,20 +15,23 @@ public class LevelSelectScreen {
     String[] radialText = {"Radial"};
     String[] increaseText = {"+"};
     String[] decreaseText = {"-"};
+    Color[] borderColors = {MoColors.darkBlue};
     Color[][] bgColors = {{MoColors.azure},{MoColors.blanchedAlmond}};
-    Font font = new Font( "Arial", Font.BOLD, 16);
+    Font font = new Font( "Arial", Font.BOLD, 24);
     Font font2 = new Font("Arial", Font.BOLD, 32);
     public Rectangle speedRectangle = new Rectangle(300, 800, 400, 100);
-    public Rectangle_ verticalSelect = new Rectangle_(100,400,125,280, verticalText, textPosition.middle, font, MoColors.black, null, null, gradientFormat.none, 100, 0, true );
-    public Rectangle_ horizontalSelect = new Rectangle_(300, 400, 125, 280, horizontalText, textPosition.middle, font, MoColors.black, null, null, gradientFormat.none,100,0, true);
-    public Rectangle_ radialSelect  = new Rectangle_(500, 400, 125, 280, radialText, textPosition.middle, font, MoColors.black, null, null, gradientFormat.none, 100, 0, true);
-    public Rectangle_ increaseSelect = new Rectangle_(200, 570, 100, 100, increaseText, textPosition.middle, font2, MoColors.black, null, null, gradientFormat.none, 100, 0, true);
-    public Rectangle_ decreaseSelect = new Rectangle_(200, 600, 100, 100, decreaseText, textPosition.middle, font2, MoColors.black, null, null, gradientFormat.none, 100, 0, true);
+    public Rectangle_ verticalSelect = new Rectangle_(100,400,200,100, verticalText, textPosition.middle, font, MoColors.black, borderColors, null, gradientFormat.none, 100, 3, true );
+    public Rectangle_ horizontalSelect = new Rectangle_(300, 400, 200, 100, horizontalText, textPosition.middle, font, MoColors.black, borderColors, null, gradientFormat.none,100,3, true);
+    public Rectangle_ radialSelect  = new Rectangle_(500, 400, 200, 100, radialText, textPosition.middle, font, MoColors.black, borderColors, null, gradientFormat.none, 100, 3, true);
+    public Rectangle_ increaseSelect = new Rectangle_(200, 570, 35, 35, increaseText, textPosition.middle, font2, MoColors.black, borderColors, null, gradientFormat.none, 100, 0, true);
+    public Rectangle_ decreaseSelect = new Rectangle_(200, 630, 35, 35, decreaseText, textPosition.middle, font2, MoColors.black, borderColors, null, gradientFormat.none, 100, 0, true);
     public stringGraphics speedDisplay = new stringGraphics();
     
     Rectangle_[] buttons = {verticalSelect, horizontalSelect, radialSelect, increaseSelect, decreaseSelect};
 
     public void render(Graphics g){
+    g.drawImage(Resources.titleBackground, 0, 0, null);
+    
     Graphics2D g2d = (Graphics2D) g;
     for (Rectangle_ button: buttons){
         button.draw(g2d);
@@ -38,7 +41,9 @@ public class LevelSelectScreen {
     //DrawUtil.stringGraphics.drawStringCentered("Time Letters are on Screen: ", speedRectangle, g2d);
     g.drawString("Time Letters are on Screen: ", 290, 638);
     g.setFont(new Font("Verdana", Font.BOLD, 32));
+    g.drawString("Select Level Type: ", Font.BOLD, 32);
     g.drawString("Level Select", 573, 100);
+    
 
    
     
