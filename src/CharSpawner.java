@@ -83,6 +83,7 @@ public class CharSpawner {
 						posY = (int) (Math.round((Math.random()) * (Game.HEIGHT - Note.size / 2)));
 						velX = -Game.WIDTH / GameData.onScreenTime;
 					}
+					velY = 0;
 					System.out.println("Horizontal char spawn velX: " + velX);
 					break;
 				case VERTICAL:
@@ -91,7 +92,7 @@ public class CharSpawner {
 					velY = Game.HEIGHT / GameData.onScreenTime;
 					// System.out.println("At charspawner 78: PosX: " + posX + ", posY: " + posY +
 					// ", velX: " + velX+ ", velY: " + velY );
-
+					velX = 0;
 					break;
 				case RADIAL:
 					double random2 = Math.round((Math.random() * (2 * (Game.WIDTH + Game.HEIGHT))));
