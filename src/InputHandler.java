@@ -10,13 +10,9 @@ import javax.swing.event.MouseInputListener;
 public class InputHandler implements KeyListener, MouseInputListener {
 	Game game;
 
-	Map<Integer, Boolean> keysPressed = new HashMap<Integer, Boolean>();
 
 	public InputHandler(Game game) {
 		this.game = game;
-		for (int i = 65; i <= 90; i++)
-			keysPressed.put(i, false);
-
 	}
 
 	@Override
@@ -28,17 +24,14 @@ public class InputHandler implements KeyListener, MouseInputListener {
 	public void keyPressed(KeyEvent e) {
 		char noteChar = Character.toUpperCase(e.getKeyChar());
 
-		if (keysPressed.get(e.getKeyCode()) == false) {
-			if (game.levelManager.noteMap.get(noteChar) > 0) {
-				game.levelManager.gradeNote(noteChar);
-				keysPressed.put(e.getKeyCode(), true);
-			}
+		if (game.levelManager.noteMap.containsKey(noteChar) && game.levelManager.noteMap.get(noteChar) > 0) {
+			game.levelManager.gradeNote(noteChar);
 		}
 	}
+	
 
 	@Override
 	public void keyReleased(KeyEvent e) {
-		keysPressed.put(e.getKeyCode(), false);
 
 	}
 

@@ -74,6 +74,13 @@ public class Rectangle_ extends Rectangle implements Shape{
         text.add(s);
     }
 
+	public Rectangle_(int x, int y, int width, int height, String s, Font fnt){
+        super(x, y, width, height);
+        text.add(s);
+		this.font = fnt;
+		System.out.println("Font and string: " + s);
+    }
+
     //the maximum constructor with arraylists
     public Rectangle_(int x, int y, int width, int height, ArrayList<String> text, textPosition textPos, Font font, Color fontColor,
     		ArrayList<Color> borderColors,  ArrayList<ArrayList<Color>> backgroundColors,gradientFormat gFormat, int backgroundOpacity, int borderThickness, boolean hasDarkenedColors){
@@ -316,9 +323,12 @@ public class Rectangle_ extends Rectangle implements Shape{
 	            stringGraphics.drawStringFlow(s, this.getBounds(), textPosition.top, g);
 	    	}else if(textPos == textPosition.middle) {
 	            stringGraphics.drawStringFlow(s, this.getBounds(), textPosition.middle, g);
+				System.out.println("Drawing:  " + s);
+
 	    	}else if (textPos == textPosition.left) { //centers on y axis
 	    		g.drawString(s, x, (int) (y + height));
-	    	}
+	    	}else{
+			}
     	}
 
     }
